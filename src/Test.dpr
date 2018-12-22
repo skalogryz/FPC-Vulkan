@@ -6,7 +6,8 @@
 
 Program Test;
 
-{$APPTYPE CONSOLE}
+{$ifdef fpc}{$mode delphi}{$endif}
+{$ifdef mswindows}{$APPTYPE CONSOLE}{$endif}
 
 uses
   vk_platform, vulkan;
