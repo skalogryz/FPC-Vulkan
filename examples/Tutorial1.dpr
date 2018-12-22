@@ -10,7 +10,8 @@
 *)
 program Tutorial1;
 
-{$APPTYPE CONSOLE}
+{$ifdef fpc}{$mode delphi}{$endif}
+{$ifdef mswindows}{$APPTYPE CONSOLE}{$endif}
 
 uses
   vk_platform in '..\src\vk_platform.pas',
@@ -68,8 +69,6 @@ begin
   // ...
   // ...
 
-
   // Never forget to free resources
   vkDestroyInstance(instance, nil);
-
 end.
