@@ -89,34 +89,15 @@ begin
 
   err := vkCreateInstance(@instInfo,@allocator,@instance);
   case err of
-    VK_ERROR_INCOMPATIBLE_DRIVER:
-    begin
-      Writeln('Incompatible driver');
-    end;
-    VK_ERROR_EXTENSION_NOT_PRESENT:
-    begin
-      Writeln('Extension not present');
-    end;
-    VK_ERROR_LAYER_NOT_PRESENT:
-    begin
-      Writeln('Layer not present');
-    end;
-    VK_ERROR_INITIALIZATION_FAILED:
-    begin
-      Writeln('Initialization failed');
-    end;
-    VK_ERROR_OUT_OF_DEVICE_MEMORY:
-    begin
-      Writeln('Out of device memory');
-    end;
-    VK_ERROR_OUT_OF_HOST_MEMORY:
-    begin
-      Writeln('Out of host memory');
-    end;
-    VK_SUCCESS:
-    begin
-      Writeln('Success');
-    end;
+    VK_ERROR_INCOMPATIBLE_DRIVER:   Writeln('Incompatible driver');
+    VK_ERROR_EXTENSION_NOT_PRESENT: Writeln('Extension not present');
+    VK_ERROR_LAYER_NOT_PRESENT:     Writeln('Layer not present');
+    VK_ERROR_INITIALIZATION_FAILED: Writeln('Initialization failed');
+    VK_ERROR_OUT_OF_DEVICE_MEMORY:  Writeln('Out of device memory');
+    VK_ERROR_OUT_OF_HOST_MEMORY:    Writeln('Out of host memory');
+    VK_SUCCESS:                     Writeln('Success');
+  else
+    Writeln('Unknown error: ', err);
   end;
 
   Writeln('Press any key...');
