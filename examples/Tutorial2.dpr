@@ -10,7 +10,8 @@
 *)
 program Tutorial2;
 
-{$APPTYPE CONSOLE}
+{$ifdef fpc}{$mode delphi}{$endif}
+{$ifdef mswindows}{$APPTYPE CONSOLE}{$endif}
 
 uses
   vk_platform in '../src/vk_platform.pas',
