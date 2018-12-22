@@ -4324,7 +4324,7 @@ var
 
 
 function vulkanGetProcAddress(ProcName: PAnsiChar; LibHandle: Pointer = nil): Pointer;
-function InitVulkan(LibName: String = VulkanLibName): Boolean;
+function InitVulkan(const LibName: String = VulkanLibName): Boolean;
 
 {$IFNDEF VK_NO_PROTOTYPES}
 var
@@ -4409,7 +4409,7 @@ begin
     Result := dlsym(LibHandle, ProcName);
   {$ENDIF}
 end;
-function InitVulkan(LibName: String = VulkanLibName): Boolean;
+function InitVulkan(const LibName: String = VulkanLibName): Boolean;
 begin
   Result := False;
 
