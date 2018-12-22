@@ -70,7 +70,8 @@ uses  vk_platform
 {$ENDIF}
 {$IFDEF VK_USE_PLATFORM_WIN32_KHR}
 const
-  VulkanLibName = 'vulkan-1-1-0-2-0.dll';
+  //VulkanLibName = 'vulkan-1-1-0-2-0.dll';
+  VulkanLibName = 'vulkan-1.dll';
 {$ENDIF}
 {$IFDEF VK_USE_PLATFORM_XLIB_KHR}
   VulkanLibName = 'libvulkan.so';

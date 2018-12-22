@@ -33,9 +33,14 @@ interface
 
 {$INCLUDE 'Vulkan.inc'}
 
+{$ifndef fpc}
+type
+  PtrUInt = UIntPtr;
+{$endif}
+
 type
   Psize_t = ^size_t;
-  size_t = Cardinal;
+  size_t = PtrUInt;
 
   Puint8_t = ^uint8_t;
   uint8_t = Byte;
