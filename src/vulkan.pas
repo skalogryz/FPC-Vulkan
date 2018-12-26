@@ -307,14 +307,17 @@ const
 
 type
   PVkPipelineCacheHeaderVersion = ^TVkPipelineCacheHeaderVersion;
-  TVkPipelineCacheHeaderVersion = (
-    VK_PIPELINE_CACHE_HEADER_VERSION_ONE = 1,
-    VK_PIPELINE_CACHE_HEADER_VERSION_BEGIN_RANGE = VK_PIPELINE_CACHE_HEADER_VERSION_ONE,
-    VK_PIPELINE_CACHE_HEADER_VERSION_END_RANGE = VK_PIPELINE_CACHE_HEADER_VERSION_ONE,
-    VK_PIPELINE_CACHE_HEADER_VERSION_RANGE_SIZE = (VK_PIPELINE_CACHE_HEADER_VERSION_ONE - VK_PIPELINE_CACHE_HEADER_VERSION_ONE + 1),
-    VK_PIPELINE_CACHE_HEADER_VERSION_MAX_ENUM = $7FFFFFFF
-  );
+  VkPipelineCacheHeaderVersion  = int32_t;
+  TVkPipelineCacheHeaderVersion = VkPipelineCacheHeaderVersion;
 
+const
+  VK_PIPELINE_CACHE_HEADER_VERSION_ONE = 1;
+  VK_PIPELINE_CACHE_HEADER_VERSION_BEGIN_RANGE = VK_PIPELINE_CACHE_HEADER_VERSION_ONE;
+  VK_PIPELINE_CACHE_HEADER_VERSION_END_RANGE = VK_PIPELINE_CACHE_HEADER_VERSION_ONE;
+  VK_PIPELINE_CACHE_HEADER_VERSION_RANGE_SIZE = (VK_PIPELINE_CACHE_HEADER_VERSION_ONE - VK_PIPELINE_CACHE_HEADER_VERSION_ONE + 1);
+  VK_PIPELINE_CACHE_HEADER_VERSION_MAX_ENUM = $7FFFFFFF;
+
+type
   PVkResult = ^TVkResult;
   VkResult  = int32_t;
   TVkResult = VkResult;
@@ -3901,54 +3904,67 @@ const
   VK_KHR_SURFACE_EXTENSION_NAME: PAnsiChar = 'VK_KHR_surface';
 
 type
-
   PVkColorSpaceKHR = ^TVkColorSpaceKHR;
-  TVkColorSpaceKHR = (
-    VK_COLORSPACE_SRGB_NONLINEAR_KHR = 0,
-    VK_COLORSPACE_BEGIN_RANGE = VK_COLORSPACE_SRGB_NONLINEAR_KHR,
-    VK_COLORSPACE_END_RANGE = VK_COLORSPACE_SRGB_NONLINEAR_KHR,
-    VK_COLORSPACE_RANGE_SIZE = (VK_COLORSPACE_SRGB_NONLINEAR_KHR - VK_COLORSPACE_SRGB_NONLINEAR_KHR + 1),
-    VK_COLORSPACE_MAX_ENUM = $7FFFFFFF
-  );
+  VkColorSpaceKHR  = int32_t;
+  TVkColorSpaceKHR = VkColorSpaceKHR;
 
+const
+  VK_COLORSPACE_SRGB_NONLINEAR_KHR = 0;
+  VK_COLORSPACE_BEGIN_RANGE = VK_COLORSPACE_SRGB_NONLINEAR_KHR;
+  VK_COLORSPACE_END_RANGE = VK_COLORSPACE_SRGB_NONLINEAR_KHR;
+  VK_COLORSPACE_RANGE_SIZE = (VK_COLORSPACE_SRGB_NONLINEAR_KHR - VK_COLORSPACE_SRGB_NONLINEAR_KHR + 1);
+  VK_COLORSPACE_MAX_ENUM = $7FFFFFFF;
+
+type
   PVkPresentModeKHR = ^TVkPresentModeKHR;
-  TVkPresentModeKHR = (
-    VK_PRESENT_MODE_IMMEDIATE_KHR = 0,
-    VK_PRESENT_MODE_MAILBOX_KHR = 1,
-    VK_PRESENT_MODE_FIFO_KHR = 2,
-    VK_PRESENT_MODE_FIFO_RELAXED_KHR = 3,
-    VK_PRESENT_MODE_BEGIN_RANGE = VK_PRESENT_MODE_IMMEDIATE_KHR,
-    VK_PRESENT_MODE_END_RANGE = VK_PRESENT_MODE_FIFO_RELAXED_KHR,
-    VK_PRESENT_MODE_RANGE_SIZE = (VK_PRESENT_MODE_FIFO_RELAXED_KHR - VK_PRESENT_MODE_IMMEDIATE_KHR + 1),
-    VK_PRESENT_MODE_MAX_ENUM = $7FFFFFFF
-  );
+  VkPresentModeKHR  = int32_t;
+  TVkPresentModeKHR = VkPresentModeKHR;
 
+const
+  VK_PRESENT_MODE_IMMEDIATE_KHR = 0;
+  VK_PRESENT_MODE_MAILBOX_KHR = 1;
+  VK_PRESENT_MODE_FIFO_KHR = 2;
+  VK_PRESENT_MODE_FIFO_RELAXED_KHR = 3;
+  VK_PRESENT_MODE_BEGIN_RANGE = VK_PRESENT_MODE_IMMEDIATE_KHR;
+  VK_PRESENT_MODE_END_RANGE = VK_PRESENT_MODE_FIFO_RELAXED_KHR;
+  VK_PRESENT_MODE_RANGE_SIZE = (VK_PRESENT_MODE_FIFO_RELAXED_KHR - VK_PRESENT_MODE_IMMEDIATE_KHR + 1);
+  VK_PRESENT_MODE_MAX_ENUM = $7FFFFFFF;
+
+type
   PVkSurfaceTransformFlagBitsKHR = ^TVkSurfaceTransformFlagBitsKHR;
-  TVkSurfaceTransformFlagBitsKHR = (
-    VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = $00000001,
-    VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = $00000002,
-    VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = $00000004,
-    VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR = $00000008,
-    VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR = $00000010,
-    VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR = $00000020,
-    VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR = $00000040,
-    VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR = $00000080,
-    VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR = $00000100
-  );
+  VkSurfaceTransformFlagBitsKHR  = int32_t;
+  TVkSurfaceTransformFlagBitsKHR = VkSurfaceTransformFlagBitsKHR;
 
+const
+  VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = $00000001;
+  VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = $00000002;
+  VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = $00000004;
+  VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR = $00000008;
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR = $00000010;
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR = $00000020;
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR = $00000040;
+  VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR = $00000080;
+  VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR = $00000100;
+
+type
   PVkSurfaceTransformFlagsKHR = ^TVkSurfaceTransformFlagsKHR;
-  TVkSurfaceTransformFlagsKHR = TVkFlags;
+  VkSurfaceTransformFlagsKHR  = VkFlags;
+  TVkSurfaceTransformFlagsKHR = VkSurfaceTransformFlagsKHR;
 
   PVkCompositeAlphaFlagBitsKHR = ^TVkCompositeAlphaFlagBitsKHR;
-  TVkCompositeAlphaFlagBitsKHR = (
-    VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR = $00000001,
-    VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR = $00000002,
-    VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR = $00000004,
-    VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR = $00000008
-  );
+  VkCompositeAlphaFlagBitsKHR  = int32_t;
+  TVkCompositeAlphaFlagBitsKHR = VkCompositeAlphaFlagBitsKHR;
 
+const
+  VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR = $00000001;
+  VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR = $00000002;
+  VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR = $00000004;
+  VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR = $00000008;
+
+type
   PVkCompositeAlphaFlagsKHR = ^TVkCompositeAlphaFlagsKHR;
-  TVkCompositeAlphaFlagsKHR = TVkFlags;
+  VkCompositeAlphaFlagsKHR  = VkFlags;
+  TVkCompositeAlphaFlagsKHR = VkCompositeAlphaFlagsKHR;
 
   PVkSurfaceCapabilitiesKHR = ^TVkSurfaceCapabilitiesKHR;
   TVkSurfaceCapabilitiesKHR = record
@@ -4101,13 +4117,13 @@ const
 type
   PPVkDisplayKHR = ^PVkDisplayKHR;
   PVkDisplayKHR = ^TVkDisplayKHR;
-  TVkDisplayKHR = record
-  end;
+  VkDisplayKHR = pointer;
+  TVkDisplayKHR = VkDisplayKHR;
 
   PPVkDisplayModeKHR = ^PVkDisplayModeKHR;
   PVkDisplayModeKHR = ^TVkDisplayModeKHR;
-  TVkDisplayModeKHR = record
-  end;
+  VkDisplayModeKHR = pointer;
+  TVkDisplayModeKHR = VkDisplayModeKHR;
 
 const
   VK_KHR_DISPLAY_SPEC_VERSION       = 21;
@@ -4115,26 +4131,31 @@ const
 
 
 type
-
   PVkDisplayPlaneAlphaFlagBitsKHR = ^TVkDisplayPlaneAlphaFlagBitsKHR;
-  TVkDisplayPlaneAlphaFlagBitsKHR = (
-    VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR = $00000001,
-    VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR = $00000002,
-    VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR = $00000004,
-    VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR = $00000008
-  );
+  VkDisplayPlaneAlphaFlagBitsKHR  = int32_t;
+  TVkDisplayPlaneAlphaFlagBitsKHR = VkDisplayPlaneAlphaFlagBitsKHR;
 
+const
+  VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR = $00000001;
+  VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR = $00000002;
+  VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR = $00000004;
+  VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR = $00000008;
+
+type
   PVkDisplayModeCreateFlagsKHR = ^TVkDisplayModeCreateFlagsKHR;
-  TVkDisplayModeCreateFlagsKHR = TVkFlags;
+  VkDisplayModeCreateFlagsKHR  = VkFlags;
+  TVkDisplayModeCreateFlagsKHR = VkDisplayModeCreateFlagsKHR;
 
   PVkDisplayPlaneAlphaFlagsKHR = ^TVkDisplayPlaneAlphaFlagsKHR;
-  TVkDisplayPlaneAlphaFlagsKHR = TVkFlags;
+  VkDisplayPlaneAlphaFlagsKHR  = VkFlags;
+  TVkDisplayPlaneAlphaFlagsKHR = VkDisplayPlaneAlphaFlagsKHR;
 
   PVkDisplaySurfaceCreateFlagsKHR = ^TVkDisplaySurfaceCreateFlagsKHR;
-  TVkDisplaySurfaceCreateFlagsKHR = TVkFlags;
+  VkDisplaySurfaceCreateFlagsKHR  = VkFlags;
+  TVkDisplaySurfaceCreateFlagsKHR = VkDisplaySurfaceCreateFlagsKHR;
 
   PVkDisplayPropertiesKHR = ^TVkDisplayPropertiesKHR;
-  TVkDisplayPropertiesKHR = record
+  VkDisplayPropertiesKHR = record
     display: TVkDisplayKHR;
     displayName: PAnsiChar;
     physicalDimensions: TVkExtent2D;
@@ -4143,29 +4164,33 @@ type
     planeReorderPossible: TVkBool32;
     persistentContent: TVkBool32;
   end;
+  TVkDisplayPropertiesKHR = VkDisplayPropertiesKHR;
 
   PVkDisplayModeParametersKHR = ^TVkDisplayModeParametersKHR;
-  TVkDisplayModeParametersKHR = record
+  VkDisplayModeParametersKHR = record
     visibleRegion: TVkExtent2D;
     refreshRate: uint32_t;
   end;
+  TVkDisplayModeParametersKHR = VkDisplayModeParametersKHR;
 
   PVkDisplayModePropertiesKHR = ^TVkDisplayModePropertiesKHR;
-  TVkDisplayModePropertiesKHR = record
+  VkDisplayModePropertiesKHR = record
     displayMode: TVkDisplayModeKHR;
     parameters: TVkDisplayModeParametersKHR;
   end;
+  TVkDisplayModePropertiesKHR = VkDisplayModePropertiesKHR;
 
   PVkDisplayModeCreateInfoKHR = ^TVkDisplayModeCreateInfoKHR;
-  TVkDisplayModeCreateInfoKHR = record
+  VkDisplayModeCreateInfoKHR = record
     sType: TVkStructureType;
     pNext: Pointer;
     flags: TVkDisplayModeCreateFlagsKHR;
     parameters: TVkDisplayModeParametersKHR;
   end;
+  TVkDisplayModeCreateInfoKHR = VkDisplayModeCreateInfoKHR;
 
   PVkDisplayPlaneCapabilitiesKHR = ^TVkDisplayPlaneCapabilitiesKHR;
-  TVkDisplayPlaneCapabilitiesKHR = record
+  VkDisplayPlaneCapabilitiesKHR = record
     supportedAlpha: TVkDisplayPlaneAlphaFlagsKHR;
     minSrcPosition: TVkOffset2D;
     maxSrcPosition: TVkOffset2D;
@@ -4176,15 +4201,17 @@ type
     minDstExtent: TVkExtent2D;
     maxDstExtent: TVkExtent2D;
   end;
+  TVkDisplayPlaneCapabilitiesKHR = VkDisplayPlaneCapabilitiesKHR;
 
   PVkDisplayPlanePropertiesKHR = ^TVkDisplayPlanePropertiesKHR;
-  TVkDisplayPlanePropertiesKHR = record
+  VkDisplayPlanePropertiesKHR = record
     currentDisplay: TVkDisplayKHR;
     currentStackIndex: uint32_t;
   end;
+  TVkDisplayPlanePropertiesKHR = VkDisplayPlanePropertiesKHR;
 
   PVkDisplaySurfaceCreateInfoKHR = ^TVkDisplaySurfaceCreateInfoKHR;
-  TVkDisplaySurfaceCreateInfoKHR = record
+  VkDisplaySurfaceCreateInfoKHR = record
     sType: TVkStructureType;
     pNext: Pointer;
     flags: TVkDisplaySurfaceCreateFlagsKHR;
@@ -4196,6 +4223,7 @@ type
     alphaMode: TVkDisplayPlaneAlphaFlagBitsKHR;
     imageExtent: TVkExtent2D;
   end;
+  TVkDisplaySurfaceCreateInfoKHR = VkDisplaySurfaceCreateInfoKHR;
 
   TvkGetPhysicalDeviceDisplayPropertiesKHR = function (
                                 physicalDevice: TVkPhysicalDevice;
