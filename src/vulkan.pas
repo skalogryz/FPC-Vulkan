@@ -164,129 +164,129 @@ type
   TVkSampleMask = VkSampleMask;
 
   PPVkInstance = ^PVkInstance;
-  PVkInstance = ^TVkInstance;
-  VkInstance = Pointer;
-  TVkInstance = VkInstance;
+  PVkInstance  = ^TVkInstance;
+  VkInstance   = PtrUInt;
+  TVkInstance  = VkInstance;
 
   PPVkPhysicalDevice = ^PVkPhysicalDevice;
-  PVkPhysicalDevice = ^TVkPhysicalDevice;
-  VkPhysicalDevice = pointer;
-  TVkPhysicalDevice = VkPhysicalDevice;
+  PVkPhysicalDevice  = ^TVkPhysicalDevice;
+  VkPhysicalDevice   = PtrUInt;
+  TVkPhysicalDevice  = VkPhysicalDevice;
 
-  PPVkDevice = ^PVkDevice;
-  PVkDevice = ^TVkDevice;
-  VkDevice = pointer;
-  TVkDevice = VkDevice;
+  PPVkDevice    = ^PVkDevice;
+  PVkDevice     = ^TVkDevice;
+  VkDevice      = PtrUInt;
+  TVkDevice     = VkDevice;
 
-  PPVkQueue = ^PVkQueue;
-  PVkQueue = ^TVkQueue;
-  VkQueue = pointer;
-  TVkQueue = VkQueue;
+  PPVkQueue     = ^PVkQueue;
+  PVkQueue      = ^TVkQueue;
+  VkQueue       = PtrUInt;
+  TVkQueue      = VkQueue;
 
   PPVkSemaphore = ^PVkSemaphore;
-  PVkSemaphore = ^TVkSemaphore;
-  VkSemaphore = pointer;
-  TVkSemaphore = VkSemaphore;
+  PVkSemaphore  = ^TVkSemaphore;
+  VkSemaphore   = PtrUInt;
+  TVkSemaphore  = VkSemaphore;
 
-  PPVkCommandBuffer = ^PVkCommandBuffer;
-  PVkCommandBuffer = ^TVkCommandBuffer;
-  VkCommandBuffer = pointer;
-  TVkCommandBuffer = VkCommandBuffer;
+  PPVkCommandBuffer  = ^PVkCommandBuffer;
+  PVkCommandBuffer   = ^TVkCommandBuffer;
+  VkCommandBuffer    = PtrUInt;
+  TVkCommandBuffer   = VkCommandBuffer;
 
-  PPVkFence = ^PVkFence;
-  PVkFence = ^TVkFence;
-  VkFence = pointer;
-  TVkFence = VkFence;
+  PPVkFence  = ^PVkFence;
+  PVkFence   = ^TVkFence;
+  VkFence    = PtrUInt;
+  TVkFence   = VkFence;
 
-  PPVkDeviceMemory = ^PVkDeviceMemory;
-  PVkDeviceMemory = ^TVkDeviceMemory;
-  VkDeviceMemory = pointer;
-  TVkDeviceMemory = VkDeviceMemory;
+  PPVkDeviceMemory   = ^PVkDeviceMemory;
+  PVkDeviceMemory    = ^TVkDeviceMemory;
+  VkDeviceMemory     = PtrUInt;
+  TVkDeviceMemory    = VkDeviceMemory;
 
   PPVkBuffer = ^PVkBuffer;
-  PVkBuffer = ^TVkBuffer;
-  VkBuffer = pointer;
-  TVkBuffer = VkBuffer;
+  PVkBuffer  = ^TVkBuffer;
+  VkBuffer   = PtrUInt;
+  TVkBuffer  = VkBuffer;
 
-  PPVkImage = ^PVkImage;
-  PVkImage = ^TVkImage;
-  VkImage = pointer;
-  TVkImage = VkImage;
+  PPVkImage  = ^PVkImage;
+  PVkImage   = ^TVkImage;
+  VkImage    = PtrUInt;
+  TVkImage   = VkImage;
 
-  PPVkEvent = ^PVkEvent;
-  PVkEvent = ^TVkEvent;
-  VkEvent = pointer;
-  TVkEvent = VkEvent;
+  PPVkEvent      = ^PVkEvent;
+  PVkEvent       = ^TVkEvent;
+  VkEvent        = PtrUInt;
+  TVkEvent       = VkEvent;
 
-  PPVkQueryPool = ^PVkQueryPool;
-  PVkQueryPool = ^TVkQueryPool;
-  VkQueryPool = pointer;
-  TVkQueryPool = VkQueryPool;
+  PPVkQueryPool  = ^PVkQueryPool;
+  PVkQueryPool   = ^TVkQueryPool;
+  VkQueryPool    = PtrUInt;
+  TVkQueryPool   = VkQueryPool;
 
   PPVkBufferView = ^PVkBufferView;
-  PVkBufferView = ^TVkBufferView;
-  VkBufferView = pointer;
-  TVkBufferView = VkBufferView;
+  PVkBufferView  = ^TVkBufferView;
+  VkBufferView   = PtrUInt;
+  TVkBufferView  = VkBufferView;
 
-  PPVkImageView = ^PVkImageView;
-  PVkImageView = ^TVkImageView;
-  VkImageView = pointer;
-  TVkImageView = VkImageView;
+  PPVkImageView  = ^PVkImageView;
+  PVkImageView   = ^TVkImageView;
+  VkImageView    = PtrUInt;
+  TVkImageView   = VkImageView;
 
-  PPVkShaderModule = ^PVkShaderModule;
-  PVkShaderModule = ^TVkShaderModule;
-  VkShaderModule = pointer;
-  TVkShaderModule = VkShaderModule;
+  PPVkShaderModule   = ^PVkShaderModule;
+  PVkShaderModule    = ^TVkShaderModule;
+  VkShaderModule     = PtrUInt;
+  TVkShaderModule    = VkShaderModule;
 
-  PPVkPipelineCache = ^PVkPipelineCache;
-  PVkPipelineCache = ^TVkPipelineCache;
-  VkPipelineCache = pointer;
-  TVkPipelineCache = VkPipelineCache;
+  PPVkPipelineCache  = ^PVkPipelineCache;
+  PVkPipelineCache   = ^TVkPipelineCache;
+  VkPipelineCache    = PtrUInt;
+  TVkPipelineCache   = VkPipelineCache;
 
   PPVkPipelineLayout = ^PVkPipelineLayout;
-  PVkPipelineLayout = ^TVkPipelineLayout;
-  VkPipelineLayout = pointer;
-  TVkPipelineLayout = VkPipelineLayout;
+  PVkPipelineLayout  = ^TVkPipelineLayout;
+  VkPipelineLayout   = PtrUInt;
+  TVkPipelineLayout  = VkPipelineLayout;
 
   PPVkRenderPass = ^PVkRenderPass;
-  PVkRenderPass = ^TVkRenderPass;
-  VkRenderPass = pointer;
-  TVkRenderPass = VkRenderPass;
+  PVkRenderPass  = ^TVkRenderPass;
+  VkRenderPass   = PtrUInt;
+  TVkRenderPass  = VkRenderPass;
 
-  PPVkPipeline = ^PVkPipeline;
-  PVkPipeline = ^TVkPipeline;
-  VkPipeline = pointer;
-  TVkPipeline = VkPipeline;
+  PPVkPipeline   = ^PVkPipeline;
+  PVkPipeline    = ^TVkPipeline;
+  VkPipeline     = PtrUInt;
+  TVkPipeline    = VkPipeline;
 
   PPVkDescriptorSetLayout = ^PVkDescriptorSetLayout;
-  PVkDescriptorSetLayout = ^TVkDescriptorSetLayout;
-  VkDescriptorSetLayout = pointer;
-  TVkDescriptorSetLayout = VkDescriptorSetLayout;
+  PVkDescriptorSetLayout  = ^TVkDescriptorSetLayout;
+  VkDescriptorSetLayout   = PtrUInt;
+  TVkDescriptorSetLayout  = VkDescriptorSetLayout;
 
   PPVkSampler = ^PVkSampler;
-  PVkSampler = ^TVkSampler;
-  VkSampler = pointer;
-  TVkSampler = VkSampler;
+  PVkSampler  = ^TVkSampler;
+  VkSampler   = PtrUInt;
+  TVkSampler  = VkSampler;
 
   PPVkDescriptorPool = ^PVkDescriptorPool;
-  PVkDescriptorPool = ^TVkDescriptorPool;
-  VkDescriptorPool = pointer;
-  TVkDescriptorPool = VkDescriptorPool;
+  PVkDescriptorPool  = ^TVkDescriptorPool;
+  VkDescriptorPool   = PtrUInt;
+  TVkDescriptorPool  = VkDescriptorPool;
 
-  PPVkDescriptorSet = ^PVkDescriptorSet;
-  PVkDescriptorSet = ^TVkDescriptorSet;
-  VkDescriptorSet = pointer;
-  TVkDescriptorSet = VkDescriptorSet;
+  PPVkDescriptorSet  = ^PVkDescriptorSet;
+  PVkDescriptorSet   = ^TVkDescriptorSet;
+  VkDescriptorSet    = PtrUInt;
+  TVkDescriptorSet   = VkDescriptorSet;
 
-  PPVkFramebuffer = ^PVkFramebuffer;
-  PVkFramebuffer = ^TVkFramebuffer;
-  VkFramebuffer = pointer;
-  TVkFramebuffer = VkFramebuffer;
+  PPVkFramebuffer    = ^PVkFramebuffer;
+  PVkFramebuffer     = ^TVkFramebuffer;
+  VkFramebuffer      = PtrUInt;
+  TVkFramebuffer     = VkFramebuffer;
 
-  PPVkCommandPool = ^PVkCommandPool;
-  PVkCommandPool = ^TVkCommandPool;
-  VkCommandPool = pointer;
-  TVkCommandPool = VkCommandPool;
+  PPVkCommandPool    = ^PVkCommandPool;
+  PVkCommandPool     = ^TVkCommandPool;
+  VkCommandPool      = PtrUInt;
+  TVkCommandPool     = VkCommandPool;
 
 const
   VK_LOD_CLAMP_NONE = 1000.0;
@@ -3995,7 +3995,7 @@ type
                                 physicalDevice: TVkPhysicalDevice;
                                 queueFamilyIndex: uint32_t;
                                 surface: TVkSurfaceKHR;
-                                var pSupported: VkBool32): TVkResult; {$IFDEF CDECL}cdecl{$ELSE}stdcall{$ENDIF};
+                                pSupported: PVkBool32): TVkResult; {$IFDEF CDECL}cdecl{$ELSE}stdcall{$ENDIF};
 
   TvkGetPhysicalDeviceSurfaceCapabilitiesKHR = function (
                                 physicalDevice: TVkPhysicalDevice;
