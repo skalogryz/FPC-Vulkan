@@ -156,11 +156,11 @@ type
   TVkBool32 = VkBool32;
 
   PVkDeviceSize = ^VkDeviceSize;
-  VkDeviceSize = PtrUInt; // {$IFNDEF DEFINE_UINT64_EQU_INT64} UInt64;{$ELSE} Int64;{$ENDIF}
+  VkDeviceSize  = PtrUInt; // {$IFNDEF DEFINE_UINT64_EQU_INT64} UInt64;{$ELSE} Int64;{$ENDIF}
   TVkDeviceSize = VkDeviceSize;
 
   PVkSampleMask = ^TVkSampleMask;
-  VkSampleMask = Cardinal;
+  VkSampleMask  = Cardinal;
   TVkSampleMask = VkSampleMask;
 
   PPVkInstance = ^PVkInstance;
@@ -289,13 +289,13 @@ type
   TVkCommandPool     = VkCommandPool;
 
 const
-  VK_LOD_CLAMP_NONE = 1000.0;
+  VK_LOD_CLAMP_NONE                 = 1000.0;
   VK_REMAINING_MIP_LEVELS           = (not 0); // Cardinal
   VK_REMAINING_ARRAY_LAYERS         = (not 0); // Cardinal
   VK_WHOLE_SIZE                     = (not 0); // UINT64?
   VK_ATTACHMENT_UNUSED              = (not 0); // Cardinal
-  VK_TRUE                           = 1;
-  VK_FALSE                          = 0;
+  VK_TRUE                           = Boolean(1);
+  VK_FALSE                          = Boolean(0);
   VK_QUEUE_FAMILY_IGNORED           = (not 0); // Cardinal
   VK_SUBPASS_EXTERNAL               = (not 0); // Cardinal
   VK_MAX_PHYSICAL_DEVICE_NAME_SIZE  = 256;
@@ -1405,7 +1405,8 @@ const
 
 type
   PVkBufferCreateFlags = ^TVkBufferCreateFlags;
-  TVkBufferCreateFlags = TVkFlags;
+  VkBufferCreateFlags  = VkFlags;
+  TVkBufferCreateFlags = VkBufferCreateFlags;
 
   PVkBufferUsageFlagBits = ^TVkBufferUsageFlagBits;
   VkBufferUsageFlagBits  = int32_t;
@@ -1751,234 +1752,234 @@ type
 
   PVkApplicationInfo = ^VkApplicationInfo;
   VkApplicationInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    pApplicationName: PAnsiChar;
-    applicationVersion: uint32_t;
-    pEngineName: PAnsiChar;
-    engineVersion: uint32_t;
-    apiVersion: uint32_t;
+    sType              : VkStructureType;
+    pNext              : Pointer;
+    pApplicationName   : PAnsiChar;
+    applicationVersion : uint32_t;
+    pEngineName        : PAnsiChar;
+    engineVersion      : uint32_t;
+    apiVersion         : uint32_t;
   end;
   TVkApplicationInfo = VkApplicationInfo;
 
   PVkInstanceCreateInfo = ^VkInstanceCreateInfo;
   VkInstanceCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkInstanceCreateFlags;
-    pApplicationInfo: PVkApplicationInfo;
-    enabledLayerCount: uint32_t;
-    ppEnabledLayerNames: PPAnsiChar;
-    enabledExtensionCount: uint32_t;
-    ppEnabledExtensionNames: PPAnsiChar;
+    sType                   : VkStructureType;
+    pNext                   : Pointer;
+    flags                   : VkInstanceCreateFlags;
+    pApplicationInfo        : PVkApplicationInfo;
+    enabledLayerCount       : uint32_t;
+    ppEnabledLayerNames     : PPAnsiChar;
+    enabledExtensionCount   : uint32_t;
+    ppEnabledExtensionNames : PPAnsiChar;
   end;
   TVkInstanceCreateInfo = VkInstanceCreateInfo;
 
   PVkAllocationCallbacks = ^VkAllocationCallbacks;
   VkAllocationCallbacks = record
-    pUserData: Pointer;
-    pfnAllocation: TvkAllocationFunction;
-    pfnReallocation: TvkReallocationFunction;
-    pfnFree: TvkFreeFunction;
-    pfnInternalAllocation: TvkInternalAllocationNotification;
-    pfnInternalFree: TvkInternalFreeNotification;
+    pUserData              : Pointer;
+    pfnAllocation          : TVkAllocationFunction;
+    pfnReallocation        : TVkReallocationFunction;
+    pfnFree                : TVkFreeFunction;
+    pfnInternalAllocation  : TVkInternalAllocationNotification;
+    pfnInternalFree        : TVkInternalFreeNotification;
   end;
   TVkAllocationCallbacks = VkAllocationCallbacks;
 
   PVkPhysicalDeviceFeatures = ^VkPhysicalDeviceFeatures;
   VkPhysicalDeviceFeatures = record
-    robustBufferAccess: TVkBool32;
-    fullDrawIndexUint32: TVkBool32;
-    imageCubeArray: TVkBool32;
-    independentBlend: TVkBool32;
-    geometryShader: TVkBool32;
-    tessellationShader: TVkBool32;
-    sampleRateShading: TVkBool32;
-    dualSrcBlend: TVkBool32;
-    logicOp: TVkBool32;
-    multiDrawIndirect: TVkBool32;
-    drawIndirectFirstInstance: TVkBool32;
-    depthClamp: TVkBool32;
-    depthBiasClamp: TVkBool32;
-    fillModeNonSolid: TVkBool32;
-    depthBounds: TVkBool32;
-    wideLines: TVkBool32;
-    largePoints: TVkBool32;
-    alphaToOne: TVkBool32;
-    multiViewport: TVkBool32;
-    samplerAnisotropy: TVkBool32;
-    textureCompressionETC2: TVkBool32;
-    textureCompressionASTC_LDR: TVkBool32;
-    textureCompressionBC: TVkBool32;
-    occlusionQueryPrecise: TVkBool32;
-    pipelineStatisticsQuery: TVkBool32;
-    vertexPipelineStoresAndAtomics: TVkBool32;
-    fragmentStoresAndAtomics: TVkBool32;
-    shaderTessellationAndGeometryPointSize: TVkBool32;
-    shaderImageGatherExtended: TVkBool32;
-    shaderStorageImageExtendedFormats: TVkBool32;
-    shaderStorageImageMultisample: TVkBool32;
-    shaderStorageImageReadWithoutFormat: TVkBool32;
-    shaderStorageImageWriteWithoutFormat: TVkBool32;
-    shaderUniformBufferArrayDynamicIndexing: TVkBool32;
-    shaderSampledImageArrayDynamicIndexing: TVkBool32;
-    shaderStorageBufferArrayDynamicIndexing: TVkBool32;
-    shaderStorageImageArrayDynamicIndexing: TVkBool32;
-    shaderClipDistance: TVkBool32;
-    shaderCullDistance: TVkBool32;
-    shaderFloat64: TVkBool32;
-    shaderInt64: TVkBool32;
-    shaderInt16: TVkBool32;
-    shaderResourceResidency: TVkBool32;
-    shaderResourceMinLod: TVkBool32;
-    sparseBinding: TVkBool32;
-    sparseResidencyBuffer: TVkBool32;
-    sparseResidencyImage2D: TVkBool32;
-    sparseResidencyImage3D: TVkBool32;
-    sparseResidency2Samples: TVkBool32;
-    sparseResidency4Samples: TVkBool32;
-    sparseResidency8Samples: TVkBool32;
-    sparseResidency16Samples: TVkBool32;
-    sparseResidencyAliased: TVkBool32;
-    variableMultisampleRate: TVkBool32;
-    inheritedQueries: TVkBool32;
+    robustBufferAccess         : VkBool32;
+    fullDrawIndexUint32        : VkBool32;
+    imageCubeArray             : VkBool32;
+    independentBlend           : VkBool32;
+    geometryShader             : VkBool32;
+    tessellationShader         : VkBool32;
+    sampleRateShading          : VkBool32;
+    dualSrcBlend               : VkBool32;
+    logicOp                    : VkBool32;
+    multiDrawIndirect          : VkBool32;
+    drawIndirectFirstInstance  : VkBool32;
+    depthClamp                 : VkBool32;
+    depthBiasClamp             : VkBool32;
+    fillModeNonSolid           : VkBool32;
+    depthBounds                : VkBool32;
+    wideLines                  : VkBool32;
+    largePoints                : VkBool32;
+    alphaToOne                 : VkBool32;
+    multiViewport              : VkBool32;
+    samplerAnisotropy          : VkBool32;
+    textureCompressionETC2     : VkBool32;
+    textureCompressionASTC_LDR : VkBool32;
+    textureCompressionBC       : VkBool32;
+    occlusionQueryPrecise      : VkBool32;
+    pipelineStatisticsQuery    : VkBool32;
+    vertexPipelineStoresAndAtomics           : VkBool32;
+    fragmentStoresAndAtomics                 : VkBool32;
+    shaderTessellationAndGeometryPointSize   : VkBool32;
+    shaderImageGatherExtended                : VkBool32;
+    shaderStorageImageExtendedFormats        : VkBool32;
+    shaderStorageImageMultisample            : VkBool32;
+    shaderStorageImageReadWithoutFormat      : VkBool32;
+    shaderStorageImageWriteWithoutFormat     : VkBool32;
+    shaderUniformBufferArrayDynamicIndexing  : VkBool32;
+    shaderSampledImageArrayDynamicIndexing   : VkBool32;
+    shaderStorageBufferArrayDynamicIndexing  : VkBool32;
+    shaderStorageImageArrayDynamicIndexing   : VkBool32;
+    shaderClipDistance         : VkBool32;
+    shaderCullDistance         : VkBool32;
+    shaderFloat64              : VkBool32;
+    shaderInt64                : VkBool32;
+    shaderInt16                : VkBool32;
+    shaderResourceResidency    : VkBool32;
+    shaderResourceMinLod       : VkBool32;
+    sparseBinding              : VkBool32;
+    sparseResidencyBuffer      : VkBool32;
+    sparseResidencyImage2D     : VkBool32;
+    sparseResidencyImage3D     : VkBool32;
+    sparseResidency2Samples    : VkBool32;
+    sparseResidency4Samples    : VkBool32;
+    sparseResidency8Samples    : VkBool32;
+    sparseResidency16Samples   : VkBool32;
+    sparseResidencyAliased     : VkBool32;
+    variableMultisampleRate    : VkBool32;
+    inheritedQueries           : VkBool32;
   end;
   TVkPhysicalDeviceFeatures = VkPhysicalDeviceFeatures;
 
   PVkFormatProperties = ^TVkFormatProperties;
   VkFormatProperties = record
-    linearTilingFeatures: TVkFormatFeatureFlags;
-    optimalTilingFeatures: TVkFormatFeatureFlags;
-    bufferFeatures: TVkFormatFeatureFlags;
+    linearTilingFeatures   : VkFormatFeatureFlags;
+    optimalTilingFeatures  : VkFormatFeatureFlags;
+    bufferFeatures         : VkFormatFeatureFlags;
   end;
   TVkFormatProperties = VkFormatProperties;
 
   PVkExtent3D = ^VkExtent3D;
   VkExtent3D = record
-    width: uint32_t;
-    height: uint32_t;
-    depth: uint32_t;
+    width  : uint32_t;
+    height : uint32_t;
+    depth  : uint32_t;
   end;
   TVkExtent3D = VkExtent3D;
 
   PVkImageFormatProperties = ^VkImageFormatProperties;
   VkImageFormatProperties = record
-    maxExtent: TVkExtent3D;
-    maxMipLevels: uint32_t;
-    maxArrayLayers: uint32_t;
-    sampleCounts: TVkSampleCountFlags;
-    maxResourceSize: TVkDeviceSize;
+    maxExtent       : VkExtent3D;
+    maxMipLevels    : uint32_t;
+    maxArrayLayers  : uint32_t;
+    sampleCounts    : VkSampleCountFlags;
+    maxResourceSize : VkDeviceSize;
   end;
   TVkImageFormatProperties = VkImageFormatProperties;
 
   PVkPhysicalDeviceLimits = ^VkPhysicalDeviceLimits;
   VkPhysicalDeviceLimits = record
-    maxImageDimension1D: uint32_t;
-    maxImageDimension2D: uint32_t;
-    maxImageDimension3D: uint32_t;
-    maxImageDimensionCube: uint32_t;
-    maxImageArrayLayers: uint32_t;
-    maxTexelBufferElements: uint32_t;
-    maxUniformBufferRange: uint32_t;
-    maxStorageBufferRange: uint32_t;
-    maxPushConstantsSize: uint32_t;
-    maxMemoryAllocationCount: uint32_t;
-    maxSamplerAllocationCount: uint32_t;
-    bufferImageGranularity: TVkDeviceSize;
-    sparseAddressSpaceSize: TVkDeviceSize;
-    maxBoundDescriptorSets: uint32_t;
-    maxPerStageDescriptorSamplers: uint32_t;
-    maxPerStageDescriptorUniformBuffers: uint32_t;
-    maxPerStageDescriptorStorageBuffers: uint32_t;
-    maxPerStageDescriptorSampledImages: uint32_t;
-    maxPerStageDescriptorStorageImages: uint32_t;
-    maxPerStageDescriptorInputAttachments: uint32_t;
-    maxPerStageResources: uint32_t;
-    maxDescriptorSetSamplers: uint32_t;
-    maxDescriptorSetUniformBuffers: uint32_t;
-    maxDescriptorSetUniformBuffersDynamic: uint32_t;
-    maxDescriptorSetStorageBuffers: uint32_t;
-    maxDescriptorSetStorageBuffersDynamic: uint32_t;
-    maxDescriptorSetSampledImages: uint32_t;
-    maxDescriptorSetStorageImages: uint32_t;
-    maxDescriptorSetInputAttachments: uint32_t;
-    maxVertexInputAttributes: uint32_t;
-    maxVertexInputBindings: uint32_t;
-    maxVertexInputAttributeOffset: uint32_t;
-    maxVertexInputBindingStride: uint32_t;
-    maxVertexOutputComponents: uint32_t;
-    maxTessellationGenerationLevel: uint32_t;
-    maxTessellationPatchSize: uint32_t;
-    maxTessellationControlPerVertexInputComponents: uint32_t;
-    maxTessellationControlPerVertexOutputComponents: uint32_t;
-    maxTessellationControlPerPatchOutputComponents: uint32_t;
-    maxTessellationControlTotalOutputComponents: uint32_t;
-    maxTessellationEvaluationInputComponents: uint32_t;
-    maxTessellationEvaluationOutputComponents: uint32_t;
-    maxGeometryShaderInvocations: uint32_t;
-    maxGeometryInputComponents: uint32_t;
-    maxGeometryOutputComponents: uint32_t;
-    maxGeometryOutputVertices: uint32_t;
-    maxGeometryTotalOutputComponents: uint32_t;
-    maxFragmentInputComponents: uint32_t;
-    maxFragmentOutputAttachments: uint32_t;
-    maxFragmentDualSrcAttachments: uint32_t;
-    maxFragmentCombinedOutputResources: uint32_t;
-    maxComputeSharedMemorySize: uint32_t;
-    maxComputeWorkGroupCount: Array [0..2] of uint32_t;
-    maxComputeWorkGroupInvocations: uint32_t;
-    maxComputeWorkGroupSize: Array [0..2] of uint32_t;
-    subPixelPrecisionBits: uint32_t;
-    subTexelPrecisionBits: uint32_t;
-    mipmapPrecisionBits: uint32_t;
-    maxDrawIndexedIndexValue: uint32_t;
-    maxDrawIndirectCount: uint32_t;
-    maxSamplerLodBias: Single;
-    maxSamplerAnisotropy: Single;
-    maxViewports: uint32_t;
-    maxViewportDimensions: Array [0..1] of uint32_t;
-    viewportBoundsRange: Array [0..1] of Single;
-    viewportSubPixelBits: uint32_t;
-    minMemoryMapAlignment: size_t;
-    minTexelBufferOffsetAlignment: TVkDeviceSize;
-    minUniformBufferOffsetAlignment: TVkDeviceSize;
-    minStorageBufferOffsetAlignment: TVkDeviceSize;
-    minTexelOffset: int32_t;
-    maxTexelOffset: uint32_t;
-    minTexelGatherOffset: int32_t;
-    maxTexelGatherOffset: uint32_t;
-    minInterpolationOffset: Single;
-    maxInterpolationOffset: Single;
-    subPixelInterpolationOffsetBits: uint32_t;
-    maxFramebufferWidth: uint32_t;
-    maxFramebufferHeight: uint32_t;
-    maxFramebufferLayers: uint32_t;
-    framebufferColorSampleCounts: TVkSampleCountFlags;
-    framebufferDepthSampleCounts: TVkSampleCountFlags;
-    framebufferStencilSampleCounts: TVkSampleCountFlags;
-    framebufferNoAttachmentsSampleCounts: TVkSampleCountFlags;
-    maxColorAttachments: uint32_t;
-    sampledImageColorSampleCounts: TVkSampleCountFlags;
-    sampledImageIntegerSampleCounts: TVkSampleCountFlags;
-    sampledImageDepthSampleCounts: TVkSampleCountFlags;
-    sampledImageStencilSampleCounts: TVkSampleCountFlags;
-    storageImageSampleCounts: TVkSampleCountFlags;
-    maxSampleMaskWords: uint32_t;
-    timestampComputeAndGraphics: TVkBool32;
-    timestampPeriod: Single;
-    maxClipDistances: uint32_t;
-    maxCullDistances: uint32_t;
-    maxCombinedClipAndCullDistances: uint32_t;
-    discreteQueuePriorities: uint32_t;
-    pointSizeRange: Array [0..1] of Single;
-    lineWidthRange: Array [0..1] of Single;
-    pointSizeGranularity: Single;
-    lineWidthGranularity: Single;
-    strictLines: TVkBool32;
-    standardSampleLocations: TVkBool32;
-    optimalBufferCopyOffsetAlignment: TVkDeviceSize;
-    optimalBufferCopyRowPitchAlignment: TVkDeviceSize;
-    nonCoherentAtomSize: TVkDeviceSize;
+    maxImageDimension1D        : uint32_t;
+    maxImageDimension2D        : uint32_t;
+    maxImageDimension3D        : uint32_t;
+    maxImageDimensionCube      : uint32_t;
+    maxImageArrayLayers        : uint32_t;
+    maxTexelBufferElements     : uint32_t;
+    maxUniformBufferRange      : uint32_t;
+    maxStorageBufferRange      : uint32_t;
+    maxPushConstantsSize       : uint32_t;
+    maxMemoryAllocationCount   : uint32_t;
+    maxSamplerAllocationCount  : uint32_t;
+    bufferImageGranularity     : VkDeviceSize;
+    sparseAddressSpaceSize     : VkDeviceSize;
+    maxBoundDescriptorSets     : uint32_t;
+    maxPerStageDescriptorSamplers          : uint32_t;
+    maxPerStageDescriptorUniformBuffers    : uint32_t;
+    maxPerStageDescriptorStorageBuffers    : uint32_t;
+    maxPerStageDescriptorSampledImages     : uint32_t;
+    maxPerStageDescriptorStorageImages     : uint32_t;
+    maxPerStageDescriptorInputAttachments  : uint32_t;
+    maxPerStageResources                   : uint32_t;
+    maxDescriptorSetSamplers               : uint32_t;
+    maxDescriptorSetUniformBuffers         : uint32_t;
+    maxDescriptorSetUniformBuffersDynamic  : uint32_t;
+    maxDescriptorSetStorageBuffers         : uint32_t;
+    maxDescriptorSetStorageBuffersDynamic  : uint32_t;
+    maxDescriptorSetSampledImages          : uint32_t;
+    maxDescriptorSetStorageImages          : uint32_t;
+    maxDescriptorSetInputAttachments       : uint32_t;
+    maxVertexInputAttributes               : uint32_t;
+    maxVertexInputBindings                 : uint32_t;
+    maxVertexInputAttributeOffset          : uint32_t;
+    maxVertexInputBindingStride            : uint32_t;
+    maxVertexOutputComponents              : uint32_t;
+    maxTessellationGenerationLevel         : uint32_t;
+    maxTessellationPatchSize               : uint32_t;
+    maxTessellationControlPerVertexInputComponents  : uint32_t;
+    maxTessellationControlPerVertexOutputComponents : uint32_t;
+    maxTessellationControlPerPatchOutputComponents  : uint32_t;
+    maxTessellationControlTotalOutputComponents     : uint32_t;
+    maxTessellationEvaluationInputComponents        : uint32_t;
+    maxTessellationEvaluationOutputComponents       : uint32_t;
+    maxGeometryShaderInvocations        : uint32_t;
+    maxGeometryInputComponents          : uint32_t;
+    maxGeometryOutputComponents         : uint32_t;
+    maxGeometryOutputVertices           : uint32_t;
+    maxGeometryTotalOutputComponents    : uint32_t;
+    maxFragmentInputComponents          : uint32_t;
+    maxFragmentOutputAttachments        : uint32_t;
+    maxFragmentDualSrcAttachments       : uint32_t;
+    maxFragmentCombinedOutputResources  : uint32_t;
+    maxComputeSharedMemorySize          : uint32_t;
+    maxComputeWorkGroupCount            : Array [0..2] of uint32_t;
+    maxComputeWorkGroupInvocations      : uint32_t;
+    maxComputeWorkGroupSize             : Array [0..2] of uint32_t;
+    subPixelPrecisionBits               : uint32_t;
+    subTexelPrecisionBits               : uint32_t;
+    mipmapPrecisionBits                 : uint32_t;
+    maxDrawIndexedIndexValue            : uint32_t;
+    maxDrawIndirectCount                : uint32_t;
+    maxSamplerLodBias                   : Single;
+    maxSamplerAnisotropy                : Single;
+    maxViewports                        : uint32_t;
+    maxViewportDimensions               : Array [0..1] of uint32_t;
+    viewportBoundsRange                 : Array [0..1] of Single;
+    viewportSubPixelBits                : uint32_t;
+    minMemoryMapAlignment               : size_t;
+    minTexelBufferOffsetAlignment       : VkDeviceSize;
+    minUniformBufferOffsetAlignment     : VkDeviceSize;
+    minStorageBufferOffsetAlignment     : VkDeviceSize;
+    minTexelOffset                      : int32_t;
+    maxTexelOffset                      : uint32_t;
+    minTexelGatherOffset                : int32_t;
+    maxTexelGatherOffset                : uint32_t;
+    minInterpolationOffset              : Single;
+    maxInterpolationOffset              : Single;
+    subPixelInterpolationOffsetBits     : uint32_t;
+    maxFramebufferWidth                 : uint32_t;
+    maxFramebufferHeight                : uint32_t;
+    maxFramebufferLayers                : uint32_t;
+    framebufferColorSampleCounts        : VkSampleCountFlags;
+    framebufferDepthSampleCounts        : VkSampleCountFlags;
+    framebufferStencilSampleCounts      : VkSampleCountFlags;
+    framebufferNoAttachmentsSampleCounts: VkSampleCountFlags;
+    maxColorAttachments                 : uint32_t;
+    sampledImageColorSampleCounts       : VkSampleCountFlags;
+    sampledImageIntegerSampleCounts     : VkSampleCountFlags;
+    sampledImageDepthSampleCounts       : VkSampleCountFlags;
+    sampledImageStencilSampleCounts     : VkSampleCountFlags;
+    storageImageSampleCounts            : VkSampleCountFlags;
+    maxSampleMaskWords                  : uint32_t;
+    timestampComputeAndGraphics         : VkBool32;
+    timestampPeriod                     : Single;
+    maxClipDistances                    : uint32_t;
+    maxCullDistances                    : uint32_t;
+    maxCombinedClipAndCullDistances     : uint32_t;
+    discreteQueuePriorities             : uint32_t;
+    pointSizeRange                      : Array [0..1] of Single;
+    lineWidthRange                      : Array [0..1] of Single;
+    pointSizeGranularity                : Single;
+    lineWidthGranularity                : Single;
+    strictLines                         : VkBool32;
+    standardSampleLocations             : VkBool32;
+    optimalBufferCopyOffsetAlignment    : VkDeviceSize;
+    optimalBufferCopyRowPitchAlignment  : VkDeviceSize;
+    nonCoherentAtomSize                 : VkDeviceSize;
   end;
   TVkPhysicalDeviceLimits = VkPhysicalDeviceLimits;
 
@@ -2017,27 +2018,29 @@ type
 
   PVkMemoryType = ^TVkMemoryType;
   VkMemoryType = record
-    propertyFlags: TVkMemoryPropertyFlags;
-    heapIndex: uint32_t;
+    propertyFlags  : VkMemoryPropertyFlags;
+    heapIndex      : uint32_t;
   end;
   TVkMemoryType = VkMemoryType;
 
   PVkMemoryHeap = ^TVkMemoryHeap;
-  TVkMemoryHeap = record
+  VkMemoryHeap = record
     size: TVkDeviceSize;
     flags: TVkMemoryHeapFlags;
   end;
+  TVkMemoryHeap = VkMemoryHeap;
 
   PVkPhysicalDeviceMemoryProperties = ^TVkPhysicalDeviceMemoryProperties;
-  TVkPhysicalDeviceMemoryProperties = record
-    memoryTypeCount: uint32_t;
-    memoryTypes: Array [0..VK_MAX_MEMORY_TYPES-1] of TVkMemoryType;
-    memoryHeapCount: uint32_t;
-    memoryHeaps: Array [0..VK_MAX_MEMORY_HEAPS-1] of TVkMemoryHeap;
+  VkPhysicalDeviceMemoryProperties = record
+    memoryTypeCount : uint32_t;
+    memoryTypes     : Array [0..VK_MAX_MEMORY_TYPES-1] of VkMemoryType;
+    memoryHeapCount : uint32_t;
+    memoryHeaps     : Array [0..VK_MAX_MEMORY_HEAPS-1] of VkMemoryHeap;
   end;
+  TVkPhysicalDeviceMemoryProperties = VkPhysicalDeviceMemoryProperties;
 
   PVkDeviceQueueCreateInfo = ^TVkDeviceQueueCreateInfo;
-  TVkDeviceQueueCreateInfo = record
+  VkDeviceQueueCreateInfo = record
     sType: TVkStructureType;
     pNext: Pointer;
     flags: TVkDeviceQueueCreateFlags;
@@ -2045,9 +2048,10 @@ type
     queueCount: uint32_t;
     pQueuePriorities: PSingle;
   end;
+  TVkDeviceQueueCreateInfo = VkDeviceQueueCreateInfo;
 
   PVkDeviceCreateInfo = ^TVkDeviceCreateInfo;
-  TVkDeviceCreateInfo = record
+  VkDeviceCreateInfo = record
     sType: TVkStructureType;
     pNext: Pointer;
     flags: TVkDeviceCreateFlags;
@@ -2059,6 +2063,7 @@ type
     ppEnabledExtensionNames: PPAnsiChar;
     pEnabledFeatures: PVkPhysicalDeviceFeatures;
   end;
+  TVkDeviceCreateInfo = VkDeviceCreateInfo;
 
   PVkExtensionProperties = ^VkExtensionProperties;
   VkExtensionProperties = record
@@ -2068,15 +2073,16 @@ type
   TVkExtensionProperties = VkExtensionProperties;
 
   PVkLayerProperties = ^TVkLayerProperties;
-  TVkLayerProperties = record
+  VkLayerProperties = record
     layerName: Array [0..VK_MAX_EXTENSION_NAME_SIZE-1] of AnsiChar;
     specVersion: uint32_t;
     implementationVersion: uint32_t;
     description: Array [0..VK_MAX_DESCRIPTION_SIZE-1] of AnsiChar;
   end;
+  TVkLayerProperties = VkLayerProperties;
 
   PVkSubmitInfo = ^TVkSubmitInfo;
-  TVkSubmitInfo = record
+  VkSubmitInfo = record
     sType: TVkStructureType;
     pNext: Pointer;
     waitSemaphoreCount: uint32_t;
@@ -2087,864 +2093,953 @@ type
     signalSemaphoreCount: uint32_t;
     pSignalSemaphores: PVkSemaphore;
   end;
+  TVkSubmitInfo = VkSubmitInfo;
 
   PVkMemoryAllocateInfo = ^TVkMemoryAllocateInfo;
-  TVkMemoryAllocateInfo = record
+  VkMemoryAllocateInfo = record
     sType: TVkStructureType;
     pNext: Pointer;
     allocationSize: TVkDeviceSize;
     memoryTypeIndex: uint32_t;
   end;
+  TVkMemoryAllocateInfo = VkMemoryAllocateInfo;
 
   PVkMappedMemoryRange = ^TVkMappedMemoryRange;
-  TVkMappedMemoryRange = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    memory: TVkDeviceMemory;
-    offset: TVkDeviceSize;
-    size: TVkDeviceSize;
+  VkMappedMemoryRange = record
+    sType  : TVkStructureType;
+    pNext  : Pointer;
+    memory : TVkDeviceMemory;
+    offset : TVkDeviceSize;
+    size   : TVkDeviceSize;
   end;
+  TVkMappedMemoryRange = VkMappedMemoryRange;
 
   PVkMemoryRequirements = ^TVkMemoryRequirements;
-  TVkMemoryRequirements = record
-    size: TVkDeviceSize;
-    alignment: TVkDeviceSize;
-    memoryTypeBits: uint32_t;
+  VkMemoryRequirements = record
+    size           : TVkDeviceSize;
+    alignment      : TVkDeviceSize;
+    memoryTypeBits : uint32_t;
   end;
+  TVkMemoryRequirements = VkMemoryRequirements;
 
   PVkSparseImageFormatProperties = ^TVkSparseImageFormatProperties;
-  TVkSparseImageFormatProperties = record
-    aspectMask: TVkImageAspectFlags;
-    imageGranularity: TVkExtent3D;
-    flags: TVkSparseImageFormatFlags;
+  VkSparseImageFormatProperties = record
+    aspectMask       : VkImageAspectFlags;
+    imageGranularity : VkExtent3D;
+    flags            : VkSparseImageFormatFlags;
   end;
+  TVkSparseImageFormatProperties = VkSparseImageFormatProperties;
 
   PVkSparseImageMemoryRequirements = ^TVkSparseImageMemoryRequirements;
-  TVkSparseImageMemoryRequirements = record
-    formatProperties: TVkSparseImageFormatProperties;
-    imageMipTailFirstLod: uint32_t;
-    imageMipTailSize: TVkDeviceSize;
-    imageMipTailOffset: TVkDeviceSize;
-    imageMipTailStride: TVkDeviceSize;
+  VkSparseImageMemoryRequirements = record
+    formatProperties     : VkSparseImageFormatProperties;
+    imageMipTailFirstLod : uint32_t;
+    imageMipTailSize     : VkDeviceSize;
+    imageMipTailOffset   : VkDeviceSize;
+    imageMipTailStride   : VkDeviceSize;
   end;
+  TVkSparseImageMemoryRequirements = VkSparseImageMemoryRequirements;
 
   PVkSparseMemoryBind = ^TVkSparseMemoryBind;
-  TVkSparseMemoryBind = record
-    resourceOffset: TVkDeviceSize;
-    size: TVkDeviceSize;
-    memory: TVkDeviceMemory;
-    memoryOffset: TVkDeviceSize;
-    flags: TVkSparseMemoryBindFlags;
+  VkSparseMemoryBind = record
+    resourceOffset : VkDeviceSize;
+    size           : VkDeviceSize;
+    memory         : VkDeviceMemory;
+    memoryOffset   : VkDeviceSize;
+    flags          : VkSparseMemoryBindFlags;
   end;
+  TVkSparseMemoryBind = VkSparseMemoryBind;
 
   PVkSparseBufferMemoryBindInfo = ^TVkSparseBufferMemoryBindInfo;
-  TVkSparseBufferMemoryBindInfo = record
-    buffer: TVkBuffer;
-    bindCount: uint32_t;
-    pBinds: PVkSparseMemoryBind;
+  VkSparseBufferMemoryBindInfo = record
+    buffer     : VkBuffer;
+    bindCount  : uint32_t;
+    pBinds     : PVkSparseMemoryBind;
   end;
+  TVkSparseBufferMemoryBindInfo = VkSparseBufferMemoryBindInfo;
 
   PVkSparseImageOpaqueMemoryBindInfo = ^TVkSparseImageOpaqueMemoryBindInfo;
-  TVkSparseImageOpaqueMemoryBindInfo = record
-    image: TVkImage;
-    bindCount: uint32_t;
-    pBinds: PVkSparseMemoryBind;
+  VkSparseImageOpaqueMemoryBindInfo = record
+    image     : TVkImage;
+    bindCount : uint32_t;
+    pBinds    : PVkSparseMemoryBind;
   end;
+  TVkSparseImageOpaqueMemoryBindInfo = VkSparseImageOpaqueMemoryBindInfo;
 
   PVkImageSubresource = ^TVkImageSubresource;
-  TVkImageSubresource = record
-    aspectMask: TVkImageAspectFlags;
-    mipLevel: uint32_t;
-    arrayLayer: uint32_t;
+  VkImageSubresource = record
+    aspectMask  : TVkImageAspectFlags;
+    mipLevel    : uint32_t;
+    arrayLayer  : uint32_t;
   end;
+  TVkImageSubresource = VkImageSubresource;
 
   PVkOffset3D = ^TVkOffset3D;
-  TVkOffset3D = record
-    x: int32_t;
-    y: int32_t;
-    z: int32_t;
+  VkOffset3D = record
+    x  : int32_t;
+    y  : int32_t;
+    z  : int32_t;
   end;
+  TVkOffset3D = VkOffset3D;
 
   PVkSparseImageMemoryBind = ^TVkSparseImageMemoryBind;
-  TVkSparseImageMemoryBind = record
-    subresource: TVkImageSubresource;
-    offset: TVkOffset3D;
-    extent: TVkExtent3D;
-    memory: TVkDeviceMemory;
-    memoryOffset: TVkDeviceSize;
-    flags: TVkSparseMemoryBindFlags;
+  VkSparseImageMemoryBind = record
+    subresource   : VkImageSubresource;
+    offset        : VkOffset3D;
+    extent        : VkExtent3D;
+    memory        : VkDeviceMemory;
+    memoryOffset  : VkDeviceSize;
+    flags         : VkSparseMemoryBindFlags;
   end;
+  TVkSparseImageMemoryBind = VkSparseImageMemoryBind;
 
   PVkSparseImageMemoryBindInfo = ^TVkSparseImageMemoryBindInfo;
-  TVkSparseImageMemoryBindInfo = record
-    image: TVkImage;
-    bindCount: uint32_t;
-    pBinds: PVkSparseImageMemoryBind;
+  VkSparseImageMemoryBindInfo = record
+    image      : VkImage;
+    bindCount  : uint32_t;
+    pBinds     : PVkSparseImageMemoryBind;
   end;
+  TVkSparseImageMemoryBindInfo = VkSparseImageMemoryBindInfo;
 
   PVkBindSparseInfo = ^TVkBindSparseInfo;
-  TVkBindSparseInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    waitSemaphoreCount: uint32_t;
-    pWaitSemaphores: PVkSemaphore;
-    bufferBindCount: uint32_t;
-    pBufferBinds: PVkSparseBufferMemoryBindInfo;
-    imageOpaqueBindCount: uint32_t;
-    pImageOpaqueBinds: PVkSparseImageOpaqueMemoryBindInfo;
-    imageBindCount: uint32_t;
-    pImageBinds: PVkSparseImageMemoryBindInfo;
-    signalSemaphoreCount: uint32_t;
-    pSignalSemaphores: PVkSemaphore;
+  VkBindSparseInfo = record
+    sType                 : VkStructureType;
+    pNext                 : Pointer;
+    waitSemaphoreCount    : uint32_t;
+    pWaitSemaphores       : PVkSemaphore;
+    bufferBindCount       : uint32_t;
+    pBufferBinds          : PVkSparseBufferMemoryBindInfo;
+    imageOpaqueBindCount  : uint32_t;
+    pImageOpaqueBinds     : PVkSparseImageOpaqueMemoryBindInfo;
+    imageBindCount        : uint32_t;
+    pImageBinds           : PVkSparseImageMemoryBindInfo;
+    signalSemaphoreCount  : uint32_t;
+    pSignalSemaphores     : PVkSemaphore;
   end;
+  TVkBindSparseInfo = VkBindSparseInfo;
 
   PVkFenceCreateInfo = ^TVkFenceCreateInfo;
-  TVkFenceCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkFenceCreateFlags;
+  VkFenceCreateInfo = record
+    sType  : VkStructureType;
+    pNext  : Pointer;
+    flags  : VkFenceCreateFlags;
   end;
+  TVkFenceCreateInfo = VkFenceCreateInfo;
 
   PVkSemaphoreCreateInfo = ^TVkSemaphoreCreateInfo;
-  TVkSemaphoreCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkSemaphoreCreateFlags;
+  VkSemaphoreCreateInfo = record
+    sType  : VkStructureType;
+    pNext  : Pointer;
+    flags  : VkSemaphoreCreateFlags;
   end;
+  TVkSemaphoreCreateInfo = VkSemaphoreCreateInfo;
 
   PVkEventCreateInfo = ^TVkEventCreateInfo;
-  TVkEventCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkEventCreateFlags;
+  VkEventCreateInfo = record
+    sType  : VkStructureType;
+    pNext  : Pointer;
+    flags  : VkEventCreateFlags;
   end;
+  TVkEventCreateInfo = VkEventCreateInfo;
 
   PVkQueryPoolCreateInfo = ^TVkQueryPoolCreateInfo;
-  TVkQueryPoolCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkQueryPoolCreateFlags;
-    queryType: TVkQueryType;
-    queryCount: uint32_t;
-    pipelineStatistics: TVkQueryPipelineStatisticFlags;
+  VkQueryPoolCreateInfo = record
+    sType               : VkStructureType;
+    pNext               : Pointer;
+    flags               : VkQueryPoolCreateFlags;
+    queryType           : VkQueryType;
+    queryCount          : uint32_t;
+    pipelineStatistics  : VkQueryPipelineStatisticFlags;
   end;
+  TVkQueryPoolCreateInfo = VkQueryPoolCreateInfo;
 
   PVkBufferCreateInfo = ^TVkBufferCreateInfo;
-  TVkBufferCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkBufferCreateFlags;
-    size: TVkDeviceSize;
-    usage: TVkBufferUsageFlags;
-    sharingMode: TVkSharingMode;
-    queueFamilyIndexCount: uint32_t;
-    pQueueFamilyIndices: Puint32_t;
+  VkBufferCreateInfo = record
+    sType                  : VkStructureType;
+    pNext                  : Pointer;
+    flags                  : VkBufferCreateFlags;
+    size                   : VkDeviceSize;
+    usage                  : VkBufferUsageFlags;
+    sharingMode            : VkSharingMode;
+    queueFamilyIndexCount  : uint32_t;
+    pQueueFamilyIndices    : Puint32_t;
   end;
+  TVkBufferCreateInfo = VkBufferCreateInfo;
 
   PVkBufferViewCreateInfo = ^TVkBufferViewCreateInfo;
-  TVkBufferViewCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkBufferViewCreateFlags;
-    buffer: TVkBuffer;
-    format: TVkFormat;
-    offset: TVkDeviceSize;
-    range: TVkDeviceSize;
+  VkBufferViewCreateInfo = record
+    sType   : VkStructureType;
+    pNext   : Pointer;
+    flags   : VkBufferViewCreateFlags;
+    buffer  : VkBuffer;
+    format  : VkFormat;
+    offset  : VkDeviceSize;
+    range   : VkDeviceSize;
   end;
+  TVkBufferViewCreateInfo = VkBufferViewCreateInfo;
 
   PVkImageCreateInfo = ^TVkImageCreateInfo;
-  TVkImageCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkImageCreateFlags;
-    imageType: TVkImageType;
-    format: TVkFormat;
-    extent: TVkExtent3D;
-    mipLevels: uint32_t;
-    arrayLayers: uint32_t;
-    samples: TVkSampleCountFlagBits;
-    tiling: TVkImageTiling;
-    usage: TVkImageUsageFlags;
-    sharingMode: TVkSharingMode;
-    queueFamilyIndexCount: uint32_t;
-    pQueueFamilyIndices: Puint32_t;
-    initialLayout: TVkImageLayout;
+  VkImageCreateInfo = record
+    sType        : VkStructureType;
+    pNext        : Pointer;
+    flags        : VkImageCreateFlags;
+    imageType    : VkImageType;
+    format       : VkFormat;
+    extent       : VkExtent3D;
+    mipLevels    : uint32_t;
+    arrayLayers  : uint32_t;
+    samples      : VkSampleCountFlagBits;
+    tiling       : VkImageTiling;
+    usage        : VkImageUsageFlags;
+    sharingMode  : VkSharingMode;
+    queueFamilyIndexCount  : uint32_t;
+    pQueueFamilyIndices    : Puint32_t;
+    initialLayout          : VkImageLayout;
   end;
+  TVkImageCreateInfo = VkImageCreateInfo;
 
   PVkSubresourceLayout = ^TVkSubresourceLayout;
-  TVkSubresourceLayout = record
-    offset: TVkDeviceSize;
-    size: TVkDeviceSize;
-    rowPitch: TVkDeviceSize;
-    arrayPitch: TVkDeviceSize;
-    depthPitch: TVkDeviceSize;
+  VkSubresourceLayout = record
+    offset      : VkDeviceSize;
+    size        : VkDeviceSize;
+    rowPitch    : VkDeviceSize;
+    arrayPitch  : VkDeviceSize;
+    depthPitch  : VkDeviceSize;
   end;
+  TVkSubresourceLayout = VkSubresourceLayout;
 
   PVkComponentMapping = ^TVkComponentMapping;
-  TVkComponentMapping = record
+  VkComponentMapping = record
     r: TVkComponentSwizzle;
     g: TVkComponentSwizzle;
     b: TVkComponentSwizzle;
     a: TVkComponentSwizzle;
   end;
+  TVkComponentMapping = VkComponentMapping;
 
   PVkImageSubresourceRange = ^TVkImageSubresourceRange;
-  TVkImageSubresourceRange = record
-    aspectMask: TVkImageAspectFlags;
-    baseMipLevel: uint32_t;
-    levelCount: uint32_t;
-    baseArrayLayer: uint32_t;
-    layerCount: uint32_t;
+  VkImageSubresourceRange = record
+    aspectMask     : VkImageAspectFlags;
+    baseMipLevel   : uint32_t;
+    levelCount     : uint32_t;
+    baseArrayLayer : uint32_t;
+    layerCount     : uint32_t;
   end;
+  TVkImageSubresourceRange = VkImageSubresourceRange;
 
   PVkImageViewCreateInfo = ^TVkImageViewCreateInfo;
-  TVkImageViewCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkImageViewCreateFlags;
-    image: TVkImage;
-    viewType: TVkImageViewType;
-    format: TVkFormat;
-    components: TVkComponentMapping;
-    subresourceRange: TVkImageSubresourceRange;
+  VkImageViewCreateInfo = record
+    sType            : VkStructureType;
+    pNext            : Pointer;
+    flags            : VkImageViewCreateFlags;
+    image            : VkImage;
+    viewType         : VkImageViewType;
+    format           : VkFormat;
+    components       : VkComponentMapping;
+    subresourceRange : VkImageSubresourceRange;
   end;
+  TVkImageViewCreateInfo = VkImageViewCreateInfo;
 
   PVkShaderModuleCreateInfo = ^TVkShaderModuleCreateInfo;
-  TVkShaderModuleCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkShaderModuleCreateFlags;
-    codeSize: size_t;
-    pCode: Puint32_t;
+  VkShaderModuleCreateInfo = record
+    sType     : VkStructureType;
+    pNext     : Pointer;
+    flags     : VkShaderModuleCreateFlags;
+    codeSize  : size_t;
+    pCode     : Puint32_t;
   end;
+  TVkShaderModuleCreateInfo = VkShaderModuleCreateInfo;
 
   PVkPipelineCacheCreateInfo = ^TVkPipelineCacheCreateInfo;
-  TVkPipelineCacheCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineCacheCreateFlags;
-    initialDataSize: size_t;
-    pInitialData: Pointer;
+  VkPipelineCacheCreateInfo = record
+    sType           : VkStructureType;
+    pNext           : Pointer;
+    flags           : VkPipelineCacheCreateFlags;
+    initialDataSize : size_t;
+    pInitialData    : Pointer;
   end;
+  TVkPipelineCacheCreateInfo = VkPipelineCacheCreateInfo;
 
   PVkSpecializationMapEntry = ^TVkSpecializationMapEntry;
-  TVkSpecializationMapEntry = record
-    constantID: uint32_t;
-    offset: uint32_t;
-    size: size_t;
+  VkSpecializationMapEntry = record
+    constantID  : uint32_t;
+    offset      : uint32_t;
+    size        : size_t;
   end;
+  TVkSpecializationMapEntry = VkSpecializationMapEntry;
 
   PVkSpecializationInfo = ^TVkSpecializationInfo;
-  TVkSpecializationInfo = record
-    mapEntryCount: uint32_t;
-    pMapEntries: PVkSpecializationMapEntry;
-    dataSize: size_t;
-    pData: Pointer;
+  VkSpecializationInfo = record
+    mapEntryCount : uint32_t;
+    pMapEntries   : PVkSpecializationMapEntry;
+    dataSize      : size_t;
+    pData         : Pointer;
   end;
+  TVkSpecializationInfo = VkSpecializationInfo;
 
   PVkPipelineShaderStageCreateInfo = ^TVkPipelineShaderStageCreateInfo;
-  TVkPipelineShaderStageCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineShaderStageCreateFlags;
-    stage: TVkShaderStageFlagBits;
-    module: TVkShaderModule;
-    pName: PAnsiChar;
-    pSpecializationInfo: PVkSpecializationInfo;
+  VkPipelineShaderStageCreateInfo = record
+    sType               : VkStructureType;
+    pNext               : Pointer;
+    flags               : VkPipelineShaderStageCreateFlags;
+    stage               : VkShaderStageFlagBits;
+    module              : VkShaderModule;
+    pName               : PAnsiChar;
+    pSpecializationInfo : PVkSpecializationInfo;
   end;
+  TVkPipelineShaderStageCreateInfo = VkPipelineShaderStageCreateInfo;
 
   PVkVertexInputBindingDescription = ^TVkVertexInputBindingDescription;
-  TVkVertexInputBindingDescription = record
-    binding: uint32_t;
-    stride: uint32_t;
-    inputRate: TVkVertexInputRate;
+  VkVertexInputBindingDescription = record
+    binding   : uint32_t;
+    stride    : uint32_t;
+    inputRate : TVkVertexInputRate;
   end;
+  TVkVertexInputBindingDescription = VkVertexInputBindingDescription;
 
   PVkVertexInputAttributeDescription = ^TVkVertexInputAttributeDescription;
-  TVkVertexInputAttributeDescription = record
-    location: uint32_t;
-    binding: uint32_t;
-    format: TVkFormat;
-    offset: uint32_t;
+  VkVertexInputAttributeDescription = record
+    location  : uint32_t;
+    binding   : uint32_t;
+    format    : VkFormat;
+    offset    : uint32_t;
   end;
+  TVkVertexInputAttributeDescription = VkVertexInputAttributeDescription;
 
   PVkPipelineVertexInputStateCreateInfo = ^TVkPipelineVertexInputStateCreateInfo;
-  TVkPipelineVertexInputStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineVertexInputStateCreateFlags;
-    vertexBindingDescriptionCount: uint32_t;
-    pVertexBindingDescriptions: PVkVertexInputBindingDescription;
-    vertexAttributeDescriptionCount: uint32_t;
-    pVertexAttributeDescriptions: PVkVertexInputAttributeDescription;
+  VkPipelineVertexInputStateCreateInfo = record
+    sType                           : VkStructureType;
+    pNext                           : Pointer;
+    flags                           : VkPipelineVertexInputStateCreateFlags;
+    vertexBindingDescriptionCount   : uint32_t;
+    pVertexBindingDescriptions      : PVkVertexInputBindingDescription;
+    vertexAttributeDescriptionCount : uint32_t;
+    pVertexAttributeDescriptions    : PVkVertexInputAttributeDescription;
   end;
+  TVkPipelineVertexInputStateCreateInfo = VkPipelineVertexInputStateCreateInfo;
 
   PVkPipelineInputAssemblyStateCreateInfo = ^TVkPipelineInputAssemblyStateCreateInfo;
-  TVkPipelineInputAssemblyStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineInputAssemblyStateCreateFlags;
-    topology: TVkPrimitiveTopology;
-    primitiveRestartEnable: TVkBool32;
+  VkPipelineInputAssemblyStateCreateInfo = record
+    sType      : VkStructureType;
+    pNext      : Pointer;
+    flags      : VkPipelineInputAssemblyStateCreateFlags;
+    topology   : VkPrimitiveTopology;
+    primitiveRestartEnable: VkBool32;
   end;
+  TVkPipelineInputAssemblyStateCreateInfo = VkPipelineInputAssemblyStateCreateInfo;
 
   PVkPipelineTessellationStateCreateInfo = ^TVkPipelineTessellationStateCreateInfo;
-  TVkPipelineTessellationStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineTessellationStateCreateFlags;
-    patchControlPoints: uint32_t;
+  VkPipelineTessellationStateCreateInfo = record
+    sType              : VkStructureType;
+    pNext              : Pointer;
+    flags              : VkPipelineTessellationStateCreateFlags;
+    patchControlPoints : uint32_t;
   end;
+  TVkPipelineTessellationStateCreateInfo = VkPipelineTessellationStateCreateInfo;
 
   PVkViewport = ^TVkViewport;
-  TVkViewport = record
-    x: Single;
-    y: Single;
-    width: Single;
-    height: Single;
-    minDepth: Single;
-    maxDepth: Single;
+  VkViewport = record
+    x        : Single;
+    y        : Single;
+    width    : Single;
+    height   : Single;
+    minDepth : Single;
+    maxDepth : Single;
   end;
+  TVkViewport = VkViewport;
 
   PVkOffset2D = ^TVkOffset2D;
-  TVkOffset2D = record
-    x: int32_t;
-    y: int32_t;
+  VkOffset2D = record
+    x  : int32_t;
+    y  : int32_t;
   end;
+  TVkOffset2D = VkOffset2D;
 
   PVkExtent2D = ^TVkExtent2D;
-  TVkExtent2D = record
-    width: uint32_t;
-    height: uint32_t;
+  VkExtent2D = record
+    width   : uint32_t;
+    height  : uint32_t;
   end;
+  TVkExtent2D = VkExtent2D;
 
   PVkRect2D = ^TVkRect2D;
-  TVkRect2D = record
-    offset: TVkOffset2D;
-    extent: TVkExtent2D;
+  VkRect2D = record
+    offset  : VkOffset2D;
+    extent  : VkExtent2D;
   end;
+  TVkRect2D = VkRect2D;
 
   PVkPipelineViewportStateCreateInfo = ^TVkPipelineViewportStateCreateInfo;
-  TVkPipelineViewportStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineViewportStateCreateFlags;
-    viewportCount: uint32_t;
-    pViewports: PVkViewport;
-    scissorCount: uint32_t;
-    pScissors: PVkRect2D;
+  VkPipelineViewportStateCreateInfo = record
+    sType         : VkStructureType;
+    pNext         : Pointer;
+    flags         : VkPipelineViewportStateCreateFlags;
+    viewportCount : uint32_t;
+    pViewports    : PVkViewport;
+    scissorCount  : uint32_t;
+    pScissors     : PVkRect2D;
   end;
+  TVkPipelineViewportStateCreateInfo = VkPipelineViewportStateCreateInfo;
 
   PVkPipelineRasterizationStateCreateInfo = ^TVkPipelineRasterizationStateCreateInfo;
-  TVkPipelineRasterizationStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineRasterizationStateCreateFlags;
-    depthClampEnable: TVkBool32;
-    rasterizerDiscardEnable: TVkBool32;
-    polygonMode: TVkPolygonMode;
-    cullMode: TVkCullModeFlags;
-    frontFace: TVkFrontFace;
-    depthBiasEnable: TVkBool32;
-    depthBiasConstantFactor: Single;
-    depthBiasClamp: Single;
-    depthBiasSlopeFactor: Single;
-    lineWidth: Single;
+  VkPipelineRasterizationStateCreateInfo = record
+    sType                   : VkStructureType;
+    pNext                   : Pointer;
+    flags                   : VkPipelineRasterizationStateCreateFlags;
+    depthClampEnable        : VkBool32;
+    rasterizerDiscardEnable : VkBool32;
+    polygonMode             : VkPolygonMode;
+    cullMode                : VkCullModeFlags;
+    frontFace               : VkFrontFace;
+    depthBiasEnable         : VkBool32;
+    depthBiasConstantFactor : Single;
+    depthBiasClamp          : Single;
+    depthBiasSlopeFactor    : Single;
+    lineWidth               : Single;
   end;
+  TVkPipelineRasterizationStateCreateInfo = VkPipelineRasterizationStateCreateInfo;
 
   PVkPipelineMultisampleStateCreateInfo = ^TVkPipelineMultisampleStateCreateInfo;
-  TVkPipelineMultisampleStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineMultisampleStateCreateFlags;
-    rasterizationSamples: TVkSampleCountFlagBits;
-    sampleShadingEnable: TVkBool32;
-    minSampleShading: Single;
-    pSampleMask: PVkSampleMask;
-    alphaToCoverageEnable: TVkBool32;
-    alphaToOneEnable: TVkBool32;
+  VkPipelineMultisampleStateCreateInfo = record
+    sType                 : VkStructureType;
+    pNext                 : Pointer;
+    flags                 : VkPipelineMultisampleStateCreateFlags;
+    rasterizationSamples  : VkSampleCountFlagBits;
+    sampleShadingEnable   : VkBool32;
+    minSampleShading      : Single;
+    pSampleMask           : PVkSampleMask;
+    alphaToCoverageEnable : VkBool32;
+    alphaToOneEnable      : VkBool32;
   end;
+  TVkPipelineMultisampleStateCreateInfo = VkPipelineMultisampleStateCreateInfo;
 
   PVkStencilOpState = ^TVkStencilOpState;
-  TVkStencilOpState = record
-    failOp: TVkStencilOp;
-    passOp: TVkStencilOp;
-    depthFailOp: TVkStencilOp;
-    compareOp: TVkCompareOp;
-    compareMask: uint32_t;
-    writeMask: uint32_t;
-    reference: uint32_t;
+  VkStencilOpState = record
+    failOp      : VkStencilOp;
+    passOp      : VkStencilOp;
+    depthFailOp : VkStencilOp;
+    compareOp   : VkCompareOp;
+    compareMask : uint32_t;
+    writeMask   : uint32_t;
+    reference   : uint32_t;
   end;
+  TVkStencilOpState = VkStencilOpState;
 
   PVkPipelineDepthStencilStateCreateInfo = ^TVkPipelineDepthStencilStateCreateInfo;
-  TVkPipelineDepthStencilStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineDepthStencilStateCreateFlags;
-    depthTestEnable: TVkBool32;
-    depthWriteEnable: TVkBool32;
-    depthCompareOp: TVkCompareOp;
-    depthBoundsTestEnable: TVkBool32;
-    stencilTestEnable: TVkBool32;
-    front: TVkStencilOpState;
-    back: TVkStencilOpState;
-    minDepthBounds: Single;
-    maxDepthBounds: Single;
+  VkPipelineDepthStencilStateCreateInfo = record
+    sType                 : VkStructureType;
+    pNext                 : Pointer;
+    flags                 : VkPipelineDepthStencilStateCreateFlags;
+    depthTestEnable       : VkBool32;
+    depthWriteEnable      : VkBool32;
+    depthCompareOp        : VkCompareOp;
+    depthBoundsTestEnable : VkBool32;
+    stencilTestEnable     : VkBool32;
+    front                 : VkStencilOpState;
+    back                  : VkStencilOpState;
+    minDepthBounds        : Single;
+    maxDepthBounds        : Single;
   end;
+  TVkPipelineDepthStencilStateCreateInfo = VkPipelineDepthStencilStateCreateInfo;
 
   PVkPipelineColorBlendAttachmentState = ^TVkPipelineColorBlendAttachmentState;
-  TVkPipelineColorBlendAttachmentState = record
-    blendEnable: TVkBool32;
-    srcColorBlendFactor: TVkBlendFactor;
-    dstColorBlendFactor: TVkBlendFactor;
-    colorBlendOp: TVkBlendOp;
-    srcAlphaBlendFactor: TVkBlendFactor;
-    dstAlphaBlendFactor: TVkBlendFactor;
-    alphaBlendOp: TVkBlendOp;
-    colorWriteMask: TVkColorComponentFlags;
+  VkPipelineColorBlendAttachmentState = record
+    blendEnable         : VkBool32;
+    srcColorBlendFactor : VkBlendFactor;
+    dstColorBlendFactor : VkBlendFactor;
+    colorBlendOp        : VkBlendOp;
+    srcAlphaBlendFactor : VkBlendFactor;
+    dstAlphaBlendFactor : VkBlendFactor;
+    alphaBlendOp        : VkBlendOp;
+    colorWriteMask      : VkColorComponentFlags;
   end;
+  TVkPipelineColorBlendAttachmentState = VkPipelineColorBlendAttachmentState;
 
   PVkPipelineColorBlendStateCreateInfo = ^TVkPipelineColorBlendStateCreateInfo;
-  TVkPipelineColorBlendStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineColorBlendStateCreateFlags;
-    logicOpEnable: TVkBool32;
-    logicOp: TVkLogicOp;
-    attachmentCount: uint32_t;
-    pAttachments: PVkPipelineColorBlendAttachmentState;
-    blendConstants: Array [0..3] of Single;
+  VkPipelineColorBlendStateCreateInfo = record
+    sType            : VkStructureType;
+    pNext            : Pointer;
+    flags            : VkPipelineColorBlendStateCreateFlags;
+    logicOpEnable    : VkBool32;
+    logicOp          : VkLogicOp;
+    attachmentCount  : uint32_t;
+    pAttachments     : PVkPipelineColorBlendAttachmentState;
+    blendConstants   : array [0..3] of Single;
   end;
+  TVkPipelineColorBlendStateCreateInfo = VkPipelineColorBlendStateCreateInfo;
 
   PVkPipelineDynamicStateCreateInfo = ^TVkPipelineDynamicStateCreateInfo;
-  TVkPipelineDynamicStateCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineDynamicStateCreateFlags;
-    dynamicStateCount: uint32_t;
-    pDynamicStates: PVkDynamicState;
+  VkPipelineDynamicStateCreateInfo = record
+    sType             : VkStructureType;
+    pNext             : Pointer;
+    flags             : VkPipelineDynamicStateCreateFlags;
+    dynamicStateCount : uint32_t;
+    pDynamicStates    : PVkDynamicState;
   end;
+  TVkPipelineDynamicStateCreateInfo = VkPipelineDynamicStateCreateInfo;
 
   PVkGraphicsPipelineCreateInfo = ^TVkGraphicsPipelineCreateInfo;
-  TVkGraphicsPipelineCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineCreateFlags;
-    stageCount: uint32_t;
-    pStages: PVkPipelineShaderStageCreateInfo;
-    pVertexInputState: PVkPipelineVertexInputStateCreateInfo;
-    pInputAssemblyState: PVkPipelineInputAssemblyStateCreateInfo;
-    pTessellationState: TVkPipelineTessellationStateCreateInfo;
-    pViewportState: PVkPipelineViewportStateCreateInfo;
-    pRasterizationState: PVkPipelineRasterizationStateCreateInfo;
-    pMultisampleState: PVkPipelineMultisampleStateCreateInfo;
-    pDepthStencilState: PVkPipelineDepthStencilStateCreateInfo;
-    pColorBlendState: PVkPipelineColorBlendStateCreateInfo;
-    pDynamicState: PVkPipelineDynamicStateCreateInfo;
-    layout: TVkPipelineLayout;
-    renderPass: TVkRenderPass;
-    subpass: uint32_t;
-    basePipelineHandle: TVkPipeline;
-    basePipelineIndex: int32_t;
+  VkGraphicsPipelineCreateInfo = record
+    sType                  : VkStructureType;
+    pNext                  : Pointer;
+    flags                  : VkPipelineCreateFlags;
+    stageCount             : uint32_t;
+    pStages                : PVkPipelineShaderStageCreateInfo;
+    pVertexInputState      : PVkPipelineVertexInputStateCreateInfo;
+    pInputAssemblyState    : PVkPipelineInputAssemblyStateCreateInfo;
+    pTessellationState     : VkPipelineTessellationStateCreateInfo;
+    pViewportState         : PVkPipelineViewportStateCreateInfo;
+    pRasterizationState    : PVkPipelineRasterizationStateCreateInfo;
+    pMultisampleState      : PVkPipelineMultisampleStateCreateInfo;
+    pDepthStencilState     : PVkPipelineDepthStencilStateCreateInfo;
+    pColorBlendState       : PVkPipelineColorBlendStateCreateInfo;
+    pDynamicState          : PVkPipelineDynamicStateCreateInfo;
+    layout                 : VkPipelineLayout;
+    renderPass             : VkRenderPass;
+    subpass                : uint32_t;
+    basePipelineHandle     : VkPipeline;
+    basePipelineIndex      : int32_t;
   end;
+  TVkGraphicsPipelineCreateInfo = VkGraphicsPipelineCreateInfo;
 
   PVkComputePipelineCreateInfo = ^TVkComputePipelineCreateInfo;
-  TVkComputePipelineCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineCreateFlags;
-    stage: TVkPipelineShaderStageCreateInfo;
-    layout: TVkPipelineLayout;
-    basePipelineHandle: TVkPipeline;
-    basePipelineIndex: int32_t;
+  VkComputePipelineCreateInfo = record
+    sType              : VkStructureType;
+    pNext              : Pointer;
+    flags              : VkPipelineCreateFlags;
+    stage              : VkPipelineShaderStageCreateInfo;
+    layout             : VkPipelineLayout;
+    basePipelineHandle : VkPipeline;
+    basePipelineIndex  : int32_t;
   end;
+  TVkComputePipelineCreateInfo = VkComputePipelineCreateInfo;
 
   PVkPushConstantRange = ^TVkPushConstantRange;
-  TVkPushConstantRange = record
-    stageFlags: TVkShaderStageFlags;
-    offset: uint32_t;
-    size: uint32_t;
+  VkPushConstantRange = record
+    stageFlags  : VkShaderStageFlags;
+    offset      : uint32_t;
+    size        : uint32_t;
   end;
+  TVkPushConstantRange = VkPushConstantRange;
 
   PVkPipelineLayoutCreateInfo = ^TVkPipelineLayoutCreateInfo;
-  TVkPipelineLayoutCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkPipelineLayoutCreateFlags;
-    setLayoutCount: uint32_t;
-    pSetLayouts: PVkDescriptorSetLayout;
-    pushConstantRangeCount: uint32_t;
-    pPushConstantRanges: PVkPushConstantRange;
+  VkPipelineLayoutCreateInfo = record
+    sType                   : VkStructureType;
+    pNext                   : Pointer;
+    flags                   : VkPipelineLayoutCreateFlags;
+    setLayoutCount          : uint32_t;
+    pSetLayouts             : PVkDescriptorSetLayout;
+    pushConstantRangeCount  : uint32_t;
+    pPushConstantRanges     : PVkPushConstantRange;
   end;
+  TVkPipelineLayoutCreateInfo = VkPipelineLayoutCreateInfo;
 
   PVkSamplerCreateInfo = ^TVkSamplerCreateInfo;
-  TVkSamplerCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkSamplerCreateFlags;
-    magFilter: TVkFilter;
-    minFilter: TVkFilter;
-    mipmapMode: TVkSamplerMipmapMode;
-    addressModeU: TVkSamplerAddressMode;
-    addressModeV: TVkSamplerAddressMode;
-    addressModeW: TVkSamplerAddressMode;
-    mipLodBias: Single;
-    anisotropyEnable: TVkBool32;
-    maxAnisotropy: Single;
-    compareEnable: TVkBool32;
-    compareOp: TVkCompareOp;
-    minLod: Single;
-    maxLod: Single;
-    borderColor: TVkBorderColor;
-    unnormalizedCoordinates: TVkBool32;
+  VkSamplerCreateInfo = record
+    sType                   : TVkStructureType;
+    pNext                   : Pointer;
+    flags                   : VkSamplerCreateFlags;
+    magFilter               : VkFilter;
+    minFilter               : VkFilter;
+    mipmapMode              : VkSamplerMipmapMode;
+    addressModeU            : VkSamplerAddressMode;
+    addressModeV            : VkSamplerAddressMode;
+    addressModeW            : VkSamplerAddressMode;
+    mipLodBias              : Single;
+    anisotropyEnable        : VkBool32;
+    maxAnisotropy           : Single;
+    compareEnable           : VkBool32;
+    compareOp               : VkCompareOp;
+    minLod                  : Single;
+    maxLod                  : Single;
+    borderColor             : VkBorderColor;
+    unnormalizedCoordinates : VkBool32;
   end;
+  TVkSamplerCreateInfo = VkSamplerCreateInfo;
 
   PVkDescriptorSetLayoutBinding = ^TVkDescriptorSetLayoutBinding;
-  TVkDescriptorSetLayoutBinding = record
-    binding: uint32_t;
-    descriptorType: TVkDescriptorType;
-    descriptorCount: uint32_t;
-    stageFlags: TVkShaderStageFlags;
-    pImmutableSamplers: PVkSampler;
+  VkDescriptorSetLayoutBinding = record
+    binding            : uint32_t;
+    descriptorType     : VkDescriptorType;
+    descriptorCount    : uint32_t;
+    stageFlags         : VkShaderStageFlags;
+    pImmutableSamplers : PVkSampler;
   end;
+  TVkDescriptorSetLayoutBinding = VkDescriptorSetLayoutBinding;
 
   PVkDescriptorSetLayoutCreateInfo = ^TVkDescriptorSetLayoutCreateInfo;
-  TVkDescriptorSetLayoutCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkDescriptorSetLayoutCreateFlags;
-    bindingCount: uint32_t;
-    pBindings: PVkDescriptorSetLayoutBinding;
+  VkDescriptorSetLayoutCreateInfo = record
+    sType         : VkStructureType;
+    pNext         : Pointer;
+    flags         : VkDescriptorSetLayoutCreateFlags;
+    bindingCount  : uint32_t;
+    pBindings     : PVkDescriptorSetLayoutBinding;
   end;
+  TVkDescriptorSetLayoutCreateInfo = VkDescriptorSetLayoutCreateInfo;
 
   PVkDescriptorPoolSize = ^TVkDescriptorPoolSize;
-  TVkDescriptorPoolSize = record
-    type_: TVkDescriptorType;
-    descriptorCount: uint32_t;
+  VkDescriptorPoolSize = record
+    type_            : VkDescriptorType;
+    descriptorCount  : uint32_t;
   end;
+  TVkDescriptorPoolSize = VkDescriptorPoolSize;
 
   PVkDescriptorPoolCreateInfo = ^TVkDescriptorPoolCreateInfo;
-  TVkDescriptorPoolCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkDescriptorPoolCreateFlags;
-    maxSets: uint32_t;
-    poolSizeCount: uint32_t;
-    pPoolSizes: PVkDescriptorPoolSize;
+  VkDescriptorPoolCreateInfo = record
+    sType          : VkStructureType;
+    pNext          : Pointer;
+    flags          : VkDescriptorPoolCreateFlags;
+    maxSets        : uint32_t;
+    poolSizeCount  : uint32_t;
+    pPoolSizes     : PVkDescriptorPoolSize;
   end;
+  TVkDescriptorPoolCreateInfo = VkDescriptorPoolCreateInfo;
 
   PVkDescriptorSetAllocateInfo = ^TVkDescriptorSetAllocateInfo;
-  TVkDescriptorSetAllocateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    descriptorPool: TVkDescriptorPool;
-    descriptorSetCount: uint32_t;
-    pSetLayouts: PVkDescriptorSetLayout;
+  VkDescriptorSetAllocateInfo = record
+    sType               : VkStructureType;
+    pNext               : Pointer;
+    descriptorPool      : VkDescriptorPool;
+    descriptorSetCount  : uint32_t;
+    pSetLayouts         : PVkDescriptorSetLayout;
   end;
+  TVkDescriptorSetAllocateInfo = VkDescriptorSetAllocateInfo;
 
   PVkDescriptorImageInfo = ^TVkDescriptorImageInfo;
-  TVkDescriptorImageInfo = record
-    sampler: TVkSampler;
-    imageView: TVkImageView;
-    imageLayout: TVkImageLayout;
+  VkDescriptorImageInfo = record
+    sampler       : VkSampler;
+    imageView     : VkImageView;
+    imageLayout   : VkImageLayout;
   end;
+  TVkDescriptorImageInfo = VkDescriptorImageInfo;
 
   PVkDescriptorBufferInfo = ^TVkDescriptorBufferInfo;
-  TVkDescriptorBufferInfo = record
-    buffer: TVkBuffer;
-    offset: TVkDeviceSize;
-    range: TVkDeviceSize;
+  VkDescriptorBufferInfo = record
+    buffer  : VkBuffer;
+    offset  : VkDeviceSize;
+    range   : VkDeviceSize;
   end;
+  TVkDescriptorBufferInfo = VkDescriptorBufferInfo;
 
   PVkWriteDescriptorSet = ^TVkWriteDescriptorSet;
-  TVkWriteDescriptorSet = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    dstSet: TVkDescriptorSet;
-    dstBinding: uint32_t;
-    dstArrayElement: uint32_t;
-    descriptorCount: uint32_t;
-    descriptorType: TVkDescriptorType;
-    pImageInfo: PVkDescriptorImageInfo;
-    pBufferInfo: PVkDescriptorBufferInfo;
-    pTexelBufferView: PVkBufferView;
+  VkWriteDescriptorSet = record
+    sType            : VkStructureType;
+    pNext            : Pointer;
+    dstSet           : VkDescriptorSet;
+    dstBinding       : uint32_t;
+    dstArrayElement  : uint32_t;
+    descriptorCount  : uint32_t;
+    descriptorType   : VkDescriptorType;
+    pImageInfo       : PVkDescriptorImageInfo;
+    pBufferInfo      : PVkDescriptorBufferInfo;
+    pTexelBufferView : PVkBufferView;
   end;
+  TVkWriteDescriptorSet = VkWriteDescriptorSet;
 
   PVkCopyDescriptorSet = ^TVkCopyDescriptorSet;
-  TVkCopyDescriptorSet = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    srcSet: TVkDescriptorSet;
-    srcBinding: uint32_t;
-    srcArrayElement: uint32_t;
-    dstSet: TVkDescriptorSet;
-    dstBinding: uint32_t;
-    dstArrayElement: uint32_t;
-    descriptorCount: uint32_t;
+  VkCopyDescriptorSet = record
+    sType            : VkStructureType;
+    pNext            : Pointer;
+    srcSet           : VkDescriptorSet;
+    srcBinding       : uint32_t;
+    srcArrayElement  : uint32_t;
+    dstSet           : VkDescriptorSet;
+    dstBinding       : uint32_t;
+    dstArrayElement  : uint32_t;
+    descriptorCount  : uint32_t;
   end;
+  TVkCopyDescriptorSet = VkCopyDescriptorSet;
 
   PVkFramebufferCreateInfo = ^TVkFramebufferCreateInfo;
-  TVkFramebufferCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkFramebufferCreateFlags;
-    renderPass: TVkRenderPass;
-    attachmentCount: uint32_t;
-    pAttachments: PVkImageView;
-    width: uint32_t;
-    height: uint32_t;
-    layers: uint32_t;
+  VkFramebufferCreateInfo = record
+    sType           : VkStructureType;
+    pNext           : Pointer;
+    flags           : VkFramebufferCreateFlags;
+    renderPass      : VkRenderPass;
+    attachmentCount : uint32_t;
+    pAttachments    : PVkImageView;
+    width           : uint32_t;
+    height          : uint32_t;
+    layers          : uint32_t;
   end;
+  TVkFramebufferCreateInfo = VkFramebufferCreateInfo;
 
   PVkAttachmentDescription = ^TVkAttachmentDescription;
-  TVkAttachmentDescription = record
-    flags: TVkAttachmentDescriptionFlags;
-    format: TVkFormat;
-    samples: TVkSampleCountFlagBits;
-    loadOp: TVkAttachmentLoadOp;
-    storeOp: TVkAttachmentStoreOp;
-    stencilLoadOp: TVkAttachmentLoadOp;
-    stencilStoreOp: TVkAttachmentStoreOp;
-    initialLayout: TVkImageLayout;
-    finalLayout: TVkImageLayout;
+  VkAttachmentDescription = record
+    flags          : VkAttachmentDescriptionFlags;
+    format         : VkFormat;
+    samples        : VkSampleCountFlagBits;
+    loadOp         : VkAttachmentLoadOp;
+    storeOp        : VkAttachmentStoreOp;
+    stencilLoadOp  : VkAttachmentLoadOp;
+    stencilStoreOp : VkAttachmentStoreOp;
+    initialLayout  : VkImageLayout;
+    finalLayout    : VkImageLayout;
   end;
+  TVkAttachmentDescription = VkAttachmentDescription;
 
   PVkAttachmentReference = ^TVkAttachmentReference;
-  TVkAttachmentReference = record
-    attachment: uint32_t;
-    layout: TVkImageLayout;
+  VkAttachmentReference = record
+    attachment : uint32_t;
+    layout     : VkImageLayout;
   end;
+  TVkAttachmentReference = VkAttachmentReference;
 
   PVkSubpassDescription = ^TVkSubpassDescription;
-  TVkSubpassDescription = record
-    flags: TVkSubpassDescriptionFlags;
-    pipelineBindPoint: TVkPipelineBindPoint;
-    inputAttachmentCount: uint32_t;
-    pInputAttachments: PVkAttachmentReference;
-    colorAttachmentCount: uint32_t;
-    pColorAttachments: PVkAttachmentReference;
-    pResolveAttachments: PVkAttachmentReference;
-    pDepthStencilAttachment: PVkAttachmentReference;
-    preserveAttachmentCount: uint32_t;
-    pPreserveAttachments: Puint32_t;
+  VkSubpassDescription = record
+    flags                   : VkSubpassDescriptionFlags;
+    pipelineBindPoint       : VkPipelineBindPoint;
+    inputAttachmentCount    : uint32_t;
+    pInputAttachments       : PVkAttachmentReference;
+    colorAttachmentCount    : uint32_t;
+    pColorAttachments       : PVkAttachmentReference;
+    pResolveAttachments     : PVkAttachmentReference;
+    pDepthStencilAttachment : PVkAttachmentReference;
+    preserveAttachmentCount : uint32_t;
+    pPreserveAttachments    : Puint32_t;
   end;
+  TVkSubpassDescription = VkSubpassDescription;
 
   PVkSubpassDependency = ^TVkSubpassDependency;
-  TVkSubpassDependency = record
-    srcSubpass: uint32_t;
-    dstSubpass: uint32_t;
-    srcStageMask: TVkPipelineStageFlags;
-    dstStageMask: TVkPipelineStageFlags;
-    srcAccessMask: TVkAccessFlags;
-    dstAccessMask: TVkAccessFlags;
-    dependencyFlags: TVkDependencyFlags;
+  VkSubpassDependency = record
+    srcSubpass       : uint32_t;
+    dstSubpass       : uint32_t;
+    srcStageMask     : VkPipelineStageFlags;
+    dstStageMask     : VkPipelineStageFlags;
+    srcAccessMask    : VkAccessFlags;
+    dstAccessMask    : VkAccessFlags;
+    dependencyFlags  : VkDependencyFlags;
   end;
+  TVkSubpassDependency = VkSubpassDependency;
 
   PVkRenderPassCreateInfo = ^TVkRenderPassCreateInfo;
-  TVkRenderPassCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkRenderPassCreateFlags;
-    attachmentCount: uint32_t;
-    pAttachments: PVkAttachmentDescription;
-    subpassCount: uint32_t;
-    pSubpasses: PVkSubpassDescription;
-    dependencyCount: uint32_t;
-    pDependencies: PVkSubpassDependency;
+  VkRenderPassCreateInfo = record
+    sType           : VkStructureType;
+    pNext           : Pointer;
+    flags           : VkRenderPassCreateFlags;
+    attachmentCount : uint32_t;
+    pAttachments    : PVkAttachmentDescription;
+    subpassCount    : uint32_t;
+    pSubpasses      : PVkSubpassDescription;
+    dependencyCount : uint32_t;
+    pDependencies   : PVkSubpassDependency;
   end;
+  TVkRenderPassCreateInfo = VkRenderPassCreateInfo;
 
   PVkCommandPoolCreateInfo = ^TVkCommandPoolCreateInfo;
-  TVkCommandPoolCreateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkCommandPoolCreateFlags;
-    queueFamilyIndex: uint32_t;
+  VkCommandPoolCreateInfo = record
+    sType            : VkStructureType;
+    pNext            : Pointer;
+    flags            : VkCommandPoolCreateFlags;
+    queueFamilyIndex : uint32_t;
   end;
+  TVkCommandPoolCreateInfo = VkCommandPoolCreateInfo;
 
   PVkCommandBufferAllocateInfo = ^TVkCommandBufferAllocateInfo;
-  TVkCommandBufferAllocateInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    commandPool: TVkCommandPool;
-    level: TVkCommandBufferLevel;
-    commandBufferCount: uint32_t;
+  VkCommandBufferAllocateInfo = record
+    sType              : VkStructureType;
+    pNext              : Pointer;
+    commandPool        : VkCommandPool;
+    level              : VkCommandBufferLevel;
+    commandBufferCount : uint32_t;
   end;
+  TVkCommandBufferAllocateInfo = VkCommandBufferAllocateInfo;
 
   PVkCommandBufferInheritanceInfo = ^TVkCommandBufferInheritanceInfo;
-  TVkCommandBufferInheritanceInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    renderPass: TVkRenderPass;
-    subpass: uint32_t;
-    framebuffer: TVkFramebuffer;
-    occlusionQueryEnable: TVkBool32;
-    queryFlags: TVkQueryControlFlags;
-    pipelineStatistics: TVkQueryPipelineStatisticFlags;
+  VkCommandBufferInheritanceInfo = record
+    sType                 : VkStructureType;
+    pNext                 : Pointer;
+    renderPass            : VkRenderPass;
+    subpass               : uint32_t;
+    framebuffer           : VkFramebuffer;
+    occlusionQueryEnable  : VkBool32;
+    queryFlags            : VkQueryControlFlags;
+    pipelineStatistics    : VkQueryPipelineStatisticFlags;
   end;
+  TVkCommandBufferInheritanceInfo = VkCommandBufferInheritanceInfo;
 
   PVkCommandBufferBeginInfo = ^TVkCommandBufferBeginInfo;
-  TVkCommandBufferBeginInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkCommandBufferUsageFlags;
-    pInheritanceInfo: PVkCommandBufferInheritanceInfo;
+  VkCommandBufferBeginInfo = record
+    sType             : VkStructureType;
+    pNext             : Pointer;
+    flags             : VkCommandBufferUsageFlags;
+    pInheritanceInfo  : PVkCommandBufferInheritanceInfo;
   end;
+  TVkCommandBufferBeginInfo = VkCommandBufferBeginInfo;
 
   PVkBufferCopy = ^TVkBufferCopy;
-  TVkBufferCopy = record
-    srcOffset: TVkDeviceSize;
-    dstOffset: TVkDeviceSize;
-    size: TVkDeviceSize;
+  VkBufferCopy = record
+    srcOffset   : VkDeviceSize;
+    dstOffset   : VkDeviceSize;
+    size        : VkDeviceSize;
   end;
+  TVkBufferCopy = VkBufferCopy;
 
   PVkImageSubresourceLayers = ^TVkImageSubresourceLayers;
-  TVkImageSubresourceLayers = record
-    aspectMask: TVkImageAspectFlags;
-    mipLevel: uint32_t;
-    baseArrayLayer: uint32_t;
-    layerCount: uint32_t;
+  VkImageSubresourceLayers = record
+    aspectMask      : VkImageAspectFlags;
+    mipLevel        : uint32_t;
+    baseArrayLayer  : uint32_t;
+    layerCount      : uint32_t;
   end;
+  TVkImageSubresourceLayers = VkImageSubresourceLayers;
 
   PVkImageCopy = ^TVkImageCopy;
-  TVkImageCopy = record
-    srcSubresource: TVkImageSubresourceLayers;
-    srcOffset: TVkOffset3D;
-    dstSubresource: TVkImageSubresourceLayers;
-    dstOffset: TVkOffset3D;
-    extent: TVkExtent3D;
+  VkImageCopy = record
+    srcSubresource  : VkImageSubresourceLayers;
+    srcOffset       : VkOffset3D;
+    dstSubresource  : VkImageSubresourceLayers;
+    dstOffset       : VkOffset3D;
+    extent          : VkExtent3D;
   end;
+  TVkImageCopy = VkImageCopy;
 
   PVkImageBlit = ^TVkImageBlit;
-  TVkImageBlit = record
-    srcSubresource: TVkImageSubresourceLayers;
-    srcOffsets: Array [0..1] of TVkOffset3D;
-    dstSubresource: TVkImageSubresourceLayers;
-    dstOffsets: Array [0..1] of TVkOffset3D;
+  VkImageBlit = record
+    srcSubresource  : VkImageSubresourceLayers;
+    srcOffsets      : Array [0..1] of TVkOffset3D;
+    dstSubresource  : VkImageSubresourceLayers;
+    dstOffsets      : Array [0..1] of TVkOffset3D;
   end;
+  TVkImageBlit = VkImageBlit;
 
   PVkBufferImageCopy = ^TVkBufferImageCopy;
-  TVkBufferImageCopy = record
-    bufferOffset: TVkDeviceSize;
-    bufferRowLength: uint32_t;
-    bufferImageHeight: uint32_t;
-    imageSubresource: TVkImageSubresourceLayers;
-    imageOffset: TVkOffset3D;
-    imageExtent: TVkExtent3D;
+  VkBufferImageCopy = record
+    bufferOffset       : VkDeviceSize;
+    bufferRowLength    : uint32_t;
+    bufferImageHeight  : uint32_t;
+    imageSubresource   : VkImageSubresourceLayers;
+    imageOffset        : VkOffset3D;
+    imageExtent        : VkExtent3D;
   end;
+  TVkBufferImageCopy = VkBufferImageCopy;
 
   PVkClearColorValue = ^TVkClearColorValue;
-  TVkClearColorValue = record
+  VkClearColorValue = record
   case Byte of
     1: (float32: Array [0..3] of Single);
     2: (int32: Array [0..3] of int32_t);
     3: (uint32: Array [0..3] of uint32_t);
   end;
+  TVkClearColorValue = VkClearColorValue;
 
   PVkClearDepthStencilValue = ^TVkClearDepthStencilValue;
-  TVkClearDepthStencilValue = record
-    depth: Single;
-    stencil: uint32_t;
+  VkClearDepthStencilValue = record
+    depth    : Single;
+    stencil  : uint32_t;
   end;
+  TVkClearDepthStencilValue = VkClearDepthStencilValue;
 
   PVkClearValue = ^TVkClearValue;
-  TVkClearValue = record
+  VkClearValue = record
   case Byte of
-    1: (color: TVkClearColorValue);
-    2: (depthStencil: TVkClearDepthStencilValue);
+    1: (color: VkClearColorValue);
+    2: (depthStencil: VkClearDepthStencilValue);
   end;
+  TVkClearValue = VkClearValue;
 
   PVkClearAttachment = ^TVkClearAttachment;
-  TVkClearAttachment = record
-    aspectMask: TVkImageAspectFlags;
-    colorAttachment: uint32_t;
-    clearValue: TVkClearValue;
+  VkClearAttachment = record
+    aspectMask      : VkImageAspectFlags;
+    colorAttachment : uint32_t;
+    clearValue      : VkClearValue;
   end;
+  TVkClearAttachment = VkClearAttachment;
 
   PVkClearRect = ^TVkClearRect;
-  TVkClearRect = record
-    rect: TVkRect2D;
-    baseArrayLayer: uint32_t;
-    layerCount: uint32_t;
+  VkClearRect = record
+    rect            : VkRect2D;
+    baseArrayLayer  : uint32_t;
+    layerCount      : uint32_t;
   end;
+  TVkClearRect = VkClearRect;
 
   PVkImageResolve = ^TVkImageResolve;
-  TVkImageResolve = record
-    srcSubresource: TVkImageSubresourceLayers;
-    srcOffset: TVkOffset3D;
-    dstSubresource: TVkImageSubresourceLayers;
-    dstOffset: TVkOffset3D;
-    extent: TVkExtent3D;
+  VkImageResolve = record
+    srcSubresource  : VkImageSubresourceLayers;
+    srcOffset       : VkOffset3D;
+    dstSubresource  : VkImageSubresourceLayers;
+    dstOffset       : VkOffset3D;
+    extent          : VkExtent3D;
   end;
+  TVkImageResolve = VkImageResolve;
 
   PVkMemoryBarrier = ^TVkMemoryBarrier;
-  TVkMemoryBarrier = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    srcAccessMask: TVkAccessFlags;
-    dstAccessMask: TVkAccessFlags;
+  VkMemoryBarrier = record
+    sType          : VkStructureType;
+    pNext          : Pointer;
+    srcAccessMask  : VkAccessFlags;
+    dstAccessMask  : VkAccessFlags;
   end;
+  TVkMemoryBarrier = VkMemoryBarrier;
 
   PVkBufferMemoryBarrier = ^TVkBufferMemoryBarrier;
-  TVkBufferMemoryBarrier = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    srcAccessMask: TVkAccessFlags;
-    dstAccessMask: TvkAccessFlags;
-    srcQueueFamilyIndex: uint32_t;
-    dstQueueFamilyIndex: uint32_t;
-    buffer: TVkBuffer;
-    offset: TVkDeviceSize;
-    size: TVkDeviceSize;
+  VkBufferMemoryBarrier = record
+    sType                : VkStructureType;
+    pNext                : Pointer;
+    srcAccessMask        : VkAccessFlags;
+    dstAccessMask        : vkAccessFlags;
+    srcQueueFamilyIndex  : uint32_t;
+    dstQueueFamilyIndex  : uint32_t;
+    buffer               : VkBuffer;
+    offset               : VkDeviceSize;
+    size                 : VkDeviceSize;
   end;
+  TVkBufferMemoryBarrier = VkBufferMemoryBarrier;
 
   PVkImageMemoryBarrier = ^TVkImageMemoryBarrier;
-  TVkImageMemoryBarrier = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    srcAccessMask: TVkAccessFlags;
-    dstAccessMask: TVkAccessFlags;
-    oldLayout: TVkImageLayout;
-    newLayout: TVkImageLayout;
-    srcQueueFamilyIndex: uint32_t;
-    dstQueueFamilyIndex: uint32_t;
-    image: TVkImage;
-    subresourceRange: TVkImageSubresourceRange;
+  VkImageMemoryBarrier = record
+    sType               : VkStructureType;
+    pNext               : Pointer;
+    srcAccessMask       : VkAccessFlags;
+    dstAccessMask       : VkAccessFlags;
+    oldLayout           : VkImageLayout;
+    newLayout           : VkImageLayout;
+    srcQueueFamilyIndex : uint32_t;
+    dstQueueFamilyIndex : uint32_t;
+    image               : VkImage;
+    subresourceRange    : VkImageSubresourceRange;
   end;
+  TVkImageMemoryBarrier = VkImageMemoryBarrier;
 
   PVkRenderPassBeginInfo = ^TVkRenderPassBeginInfo;
-  TVkRenderPassBeginInfo = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    renderPass: TVkRenderPass;
-    framebuffer: TVkFramebuffer;
-    renderArea: TVkRect2D;
-    clearValueCount: uint32_t;
-    pClearValues: PVkClearValue;
+  VkRenderPassBeginInfo = record
+    sType           : VkStructureType;
+    pNext           : Pointer;
+    renderPass      : VkRenderPass;
+    framebuffer     : VkFramebuffer;
+    renderArea      : VkRect2D;
+    clearValueCount : uint32_t;
+    pClearValues    : PVkClearValue;
   end;
+  TVkRenderPassBeginInfo = VkRenderPassBeginInfo;
 
   PVkDispatchIndirectCommand = ^TVkDispatchIndirectCommand;
-  TVkDispatchIndirectCommand = record
-    x: uint32_t;
-    y: uint32_t;
-    z: uint32_t;
+  VkDispatchIndirectCommand = record
+    x  : uint32_t;
+    y  : uint32_t;
+    z  : uint32_t;
   end;
+  TVkDispatchIndirectCommand = VkDispatchIndirectCommand;
 
   PVkDrawIndexedIndirectCommand = ^TVkDrawIndexedIndirectCommand;
-  TVkDrawIndexedIndirectCommand = record
-    indexCount: uint32_t;
-    instanceCount: uint32_t;
-    firstIndex: uint32_t;
-    vertexOffset: int32_t;
-    firstInstance: uint32_t;
+  VkDrawIndexedIndirectCommand = record
+    indexCount     : uint32_t;
+    instanceCount  : uint32_t;
+    firstIndex     : uint32_t;
+    vertexOffset   : int32_t;
+    firstInstance  : uint32_t;
   end;
+  TVkDrawIndexedIndirectCommand = VkDrawIndexedIndirectCommand;
 
   PVkDrawIndirectCommand = ^TVkDrawIndirectCommand;
-  TVkDrawIndirectCommand = record
-    vertexCount: uint32_t;
-    instanceCount: uint32_t;
-    firstVertex: uint32_t;
-    firstInstance: uint32_t;
+  VkDrawIndirectCommand = record
+    vertexCount   : uint32_t;
+    instanceCount : uint32_t;
+    firstVertex   : uint32_t;
+    firstInstance : uint32_t;
   end;
+  TVkDrawIndirectCommand = VkDrawIndirectCommand;
 
   TvkCreateInstance = function (
                                 const pCreateInfo: PVkInstanceCreateInfo;
@@ -3160,7 +3255,7 @@ type
                                 timeout: uint64_t): TVkResult; {$IFDEF CDECL}cdecl{$ELSE}stdcall{$ENDIF};
 
   TvkCreateSemaphore = function (
-                                device: TVkDevice;
+                                device: VkDevice;
                                 pCreateInfo: PVkSemaphoreCreateInfo;
                                 pAllocator: PVkAllocationCallbacks;
                                 pSemaphore: PVkSemaphore): TVkResult; {$IFDEF CDECL}cdecl{$ELSE}stdcall{$ENDIF};
@@ -3967,24 +4062,26 @@ type
   TVkCompositeAlphaFlagsKHR = VkCompositeAlphaFlagsKHR;
 
   PVkSurfaceCapabilitiesKHR = ^TVkSurfaceCapabilitiesKHR;
-  TVkSurfaceCapabilitiesKHR = record
-    minImageCount: uint32_t;
-    maxImageCount: uint32_t;
-    currentExtent: TVkExtent2D;
-    minImageExtent: TVkExtent2D;
-    maxImageExtent: TVkExtent2D;
-    maxImageArrayLayers: uint32_t;
-    supportedTransforms: TVkSurfaceTransformFlagsKHR;
-    currentTransform: TVkSurfaceTransformFlagBitsKHR;
-    supportedCompositeAlpha: TVkCompositeAlphaFlagsKHR;
-    supportedUsageFlags: TVkImageUsageFlags;
+  VkSurfaceCapabilitiesKHR = record
+    minImageCount           : uint32_t;
+    maxImageCount           : uint32_t;
+    currentExtent           : VkExtent2D;
+    minImageExtent          : VkExtent2D;
+    maxImageExtent          : VkExtent2D;
+    maxImageArrayLayers     : uint32_t;
+    supportedTransforms     : VkSurfaceTransformFlagsKHR;
+    currentTransform        : VkSurfaceTransformFlagBitsKHR;
+    supportedCompositeAlpha : VkCompositeAlphaFlagsKHR;
+    supportedUsageFlags     : VkImageUsageFlags;
   end;
+  TVkSurfaceCapabilitiesKHR = VkSurfaceCapabilitiesKHR;
 
   PVkSurfaceFormatKHR = ^TVkSurfaceFormatKHR;
-  TVkSurfaceFormatKHR = record
-    format: TVkFormat;
-    colorSpace: TVkColorSpaceKHR;
+  VkSurfaceFormatKHR = record
+    format      : VkFormat;
+    colorSpace  : VkColorSpaceKHR;
   end;
+  TVkSurfaceFormatKHR = VkSurfaceFormatKHR;
 
   TvkDestroySurfaceKHR = procedure (
                                 instance: TVkInstance;
@@ -4029,8 +4126,8 @@ const
 type
   PPVkSwapchainKHR = ^PVkSwapchainKHR;
   PVkSwapchainKHR = ^TVkSwapchainKHR;
-  TVkSwapchainKHR = record
-  end;
+  VkSwapchainKHR  = PtrUInt;
+  TVkSwapchainKHR = VkSwapchainKHR;
 
 const
   VK_KHR_SWAPCHAIN_SPEC_VERSION     = 67;
@@ -4038,41 +4135,44 @@ const
 
 type
   PVkSwapchainCreateFlagsKHR = ^TVkSwapchainCreateFlagsKHR;
-  TVkSwapchainCreateFlagsKHR = TVkFlags;
+  VkSwapchainCreateFlagsKHR  = VkFlags;
+  TVkSwapchainCreateFlagsKHR = VkSwapchainCreateFlagsKHR;
 
   PVkSwapchainCreateInfoKHR = ^TVkSwapchainCreateInfoKHR;
-  TVkSwapchainCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkSwapchainCreateFlagsKHR;
-    surface: TVkSurfaceKHR;
-    minImageCount: uint32_t;
-    imageFormat: TVkFormat;
-    imageColorSpace: TVkColorSpaceKHR;
-    imageExtent: TVkExtent2D;
-    imageArrayLayers: uint32_t;
-    imageUsage: TVkImageUsageFlags;
-    imageSharingMode: TVkSharingMode;
-    queueFamilyIndexCount: uint32_t;
-    pQueueFamilyIndices: Puint32_t;
-    preTransform: TVkSurfaceTransformFlagBitsKHR;
-    compositeAlpha: TVkCompositeAlphaFlagBitsKHR;
-    presentMode: TVkPresentModeKHR;
-    clipped: TVkBool32;
-    oldSwapchain: TVkSwapchainKHR;
+  VkSwapchainCreateInfoKHR = record
+    sType                 : VkStructureType;
+    pNext                 : Pointer;
+    flags                 : VkSwapchainCreateFlagsKHR;
+    surface               : VkSurfaceKHR;
+    minImageCount         : uint32_t;
+    imageFormat           : VkFormat;
+    imageColorSpace       : VkColorSpaceKHR;
+    imageExtent           : VkExtent2D;
+    imageArrayLayers      : uint32_t;
+    imageUsage            : VkImageUsageFlags;
+    imageSharingMode      : VkSharingMode;
+    queueFamilyIndexCount : uint32_t;
+    pQueueFamilyIndices   : Puint32_t;
+    preTransform          : VkSurfaceTransformFlagBitsKHR;
+    compositeAlpha        : VkCompositeAlphaFlagBitsKHR;
+    presentMode           : VkPresentModeKHR;
+    clipped               : VkBool32;
+    oldSwapchain          : VkSwapchainKHR;
   end;
+  TVkSwapchainCreateInfoKHR = VkSwapchainCreateInfoKHR;
 
   PVkPresentInfoKHR = ^TVkPresentInfoKHR;
-  TVkPresentInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    waitSemaphoreCount: uint32_t;
-    pWaitSemaphores: PVkSemaphore;
-    swapchainCount: uint32_t;
-    pSwapchains: PVkSwapchainKHR;
-    pImageIndices: Puint32_t;
-    pResults: PVkResult;
+  VkPresentInfoKHR = record
+    sType               : VkStructureType;
+    pNext               : Pointer;
+    waitSemaphoreCount  : uint32_t;
+    pWaitSemaphores     : PVkSemaphore;
+    swapchainCount      : uint32_t;
+    pSwapchains         : PVkSwapchainKHR;
+    pImageIndices       : Puint32_t;
+    pResults            : PVkResult;
   end;
+  TVkPresentInfoKHR = VkPresentInfoKHR;
 
   TvkCreateSwapchainKHR = function (
                                 device: TVkDevice;
@@ -4156,72 +4256,72 @@ type
 
   PVkDisplayPropertiesKHR = ^TVkDisplayPropertiesKHR;
   VkDisplayPropertiesKHR = record
-    display: TVkDisplayKHR;
-    displayName: PAnsiChar;
-    physicalDimensions: TVkExtent2D;
-    physicalResolution: TVkExtent2D;
-    supportedTransforms: TVkSurfaceTransformFlagsKHR;
-    planeReorderPossible: TVkBool32;
-    persistentContent: TVkBool32;
+    display               : VkDisplayKHR;
+    displayName           : PAnsiChar;
+    physicalDimensions    : VkExtent2D;
+    physicalResolution    : VkExtent2D;
+    supportedTransforms   : VkSurfaceTransformFlagsKHR;
+    planeReorderPossible  : VkBool32;
+    persistentContent     : VkBool32;
   end;
   TVkDisplayPropertiesKHR = VkDisplayPropertiesKHR;
 
   PVkDisplayModeParametersKHR = ^TVkDisplayModeParametersKHR;
   VkDisplayModeParametersKHR = record
-    visibleRegion: TVkExtent2D;
-    refreshRate: uint32_t;
+    visibleRegion   : VkExtent2D;
+    refreshRate     : uint32_t;
   end;
   TVkDisplayModeParametersKHR = VkDisplayModeParametersKHR;
 
   PVkDisplayModePropertiesKHR = ^TVkDisplayModePropertiesKHR;
   VkDisplayModePropertiesKHR = record
-    displayMode: TVkDisplayModeKHR;
-    parameters: TVkDisplayModeParametersKHR;
+    displayMode   : VkDisplayModeKHR;
+    parameters    : VkDisplayModeParametersKHR;
   end;
   TVkDisplayModePropertiesKHR = VkDisplayModePropertiesKHR;
 
   PVkDisplayModeCreateInfoKHR = ^TVkDisplayModeCreateInfoKHR;
   VkDisplayModeCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkDisplayModeCreateFlagsKHR;
-    parameters: TVkDisplayModeParametersKHR;
+    sType      : VkStructureType;
+    pNext      : Pointer;
+    flags      : VkDisplayModeCreateFlagsKHR;
+    parameters : VkDisplayModeParametersKHR;
   end;
   TVkDisplayModeCreateInfoKHR = VkDisplayModeCreateInfoKHR;
 
   PVkDisplayPlaneCapabilitiesKHR = ^TVkDisplayPlaneCapabilitiesKHR;
   VkDisplayPlaneCapabilitiesKHR = record
-    supportedAlpha: TVkDisplayPlaneAlphaFlagsKHR;
-    minSrcPosition: TVkOffset2D;
-    maxSrcPosition: TVkOffset2D;
-    minSrcExtent: TVkExtent2D;
-    maxSrcExtent: TVkExtent2D;
-    minDstPosition: TVkOffset2D;
-    maxDstPosition: TVkOffset2D;
-    minDstExtent: TVkExtent2D;
-    maxDstExtent: TVkExtent2D;
+    supportedAlpha  : VkDisplayPlaneAlphaFlagsKHR;
+    minSrcPosition  : VkOffset2D;
+    maxSrcPosition  : VkOffset2D;
+    minSrcExtent    : VkExtent2D;
+    maxSrcExtent    : VkExtent2D;
+    minDstPosition  : VkOffset2D;
+    maxDstPosition  : VkOffset2D;
+    minDstExtent    : VkExtent2D;
+    maxDstExtent    : VkExtent2D;
   end;
   TVkDisplayPlaneCapabilitiesKHR = VkDisplayPlaneCapabilitiesKHR;
 
   PVkDisplayPlanePropertiesKHR = ^TVkDisplayPlanePropertiesKHR;
   VkDisplayPlanePropertiesKHR = record
-    currentDisplay: TVkDisplayKHR;
-    currentStackIndex: uint32_t;
+    currentDisplay     : VkDisplayKHR;
+    currentStackIndex  : uint32_t;
   end;
   TVkDisplayPlanePropertiesKHR = VkDisplayPlanePropertiesKHR;
 
   PVkDisplaySurfaceCreateInfoKHR = ^TVkDisplaySurfaceCreateInfoKHR;
   VkDisplaySurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkDisplaySurfaceCreateFlagsKHR;
-    displayMode: TVkDisplayModeKHR;
-    planeIndex: uint32_t;
-    planeStackIndex: uint32_t;
-    transform: TVkSurfaceTransformFlagBitsKHR;
-    globalAlpha: Single;
-    alphaMode: TVkDisplayPlaneAlphaFlagBitsKHR;
-    imageExtent: TVkExtent2D;
+    sType            : VkStructureType;
+    pNext            : Pointer;
+    flags            : VkDisplaySurfaceCreateFlagsKHR;
+    displayMode      : VkDisplayModeKHR;
+    planeIndex       : uint32_t;
+    planeStackIndex  : uint32_t;
+    transform        : VkSurfaceTransformFlagBitsKHR;
+    globalAlpha      : Single;
+    alphaMode        : VkDisplayPlaneAlphaFlagBitsKHR;
+    imageExtent      : VkExtent2D;
   end;
   TVkDisplaySurfaceCreateInfoKHR = VkDisplaySurfaceCreateInfoKHR;
 
@@ -4287,13 +4387,14 @@ const
 type
 
   PVkDisplayPresentInfoKHR = ^TVkDisplayPresentInfoKHR;
-  TVkDisplayPresentInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    srcRect: TVkRect2D;
-    dstRect: TVkRect2D;
-    persistent: TVkBool32;
+  VkDisplayPresentInfoKHR = record
+    sType      : VkStructureType;
+    pNext      : Pointer;
+    srcRect    : VkRect2D;
+    dstRect    : VkRect2D;
+    persistent : VkBool32;
   end;
+  TVkDisplayPresentInfoKHR = VkDisplayPresentInfoKHR;
 
   TvkCreateSharedSwapchainsKHR = function (
                                 device: TVkDevice;
@@ -4318,16 +4419,18 @@ const
 type
 
   PVkXlibSurfaceCreateFlagsKHR = ^TVkXlibSurfaceCreateFlagsKHR;
+  VkXlibSurfaceCreateFlagsKHR  = VkFlags;
   TVkXlibSurfaceCreateFlagsKHR = TVkFlags;
 
   PVkXlibSurfaceCreateInfoKHR = ^TVkXlibSurfaceCreateInfoKHR;
-  TVkXlibSurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkXlibSurfaceCreateFlagsKHR;
-    dpy: PDisplay;
-    window: TWindow;
+  VkXlibSurfaceCreateInfoKHR = record
+    sType  : TVkStructureType;
+    pNext  : Pointer;
+    flags  : TVkXlibSurfaceCreateFlagsKHR;
+    dpy    : PDisplay;
+    window : TWindow;
   end;
+  TVkXlibSurfaceCreateInfoKHR = VkXlibSurfaceCreateInfoKHR;
 
 
   TvkCreateXlibSurfaceKHR = function (
@@ -4359,16 +4462,18 @@ const
 
 type
   TVkXcbSurfaceCreateFlagsKHR = ^TVkXcbSurfaceCreateFlagsKHR;
+  VkXcbSurfaceCreateFlagsKHR  = VkFlags;
   TVkXcbSurfaceCreateFlagsKHR = TVkFlags;
 
   PVkXcbSurfaceCreateInfoKHR = ^TVkXcbSurfaceCreateInfoKHR;
-  TVkXcbSurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkXcbSurfaceCreateFlagsKHR;
-    connection: Pxcb_connection_t;
-    window: Txcb_window_t;
+  VkXcbSurfaceCreateInfoKHR = record
+    sType       : TVkStructureType;
+    pNext       : Pointer;
+    flags       : TVkXcbSurfaceCreateFlagsKHR;
+    connection  : Pxcb_connection_t;
+    window      : Txcb_window_t;
   end;
+  TVkXcbSurfaceCreateInfoKHR = VkXcbSurfaceCreateInfoKHR;
 
 
   TvkCreateXcbSurfaceKHR = function (
@@ -4401,16 +4506,18 @@ const
 
 type
   PVkWaylandSurfaceCreateFlagsKHR = ^TVkWaylandSurfaceCreateFlagsKHR;
+  VkWaylandSurfaceCreateFlagsKHR  = VkFlags;
   TVkWaylandSurfaceCreateFlagsKHR = TVkFlags;
 
   PVkWaylandSurfaceCreateInfoKHR = ^TVkWaylandSurfaceCreateInfoKHR;
-  TVkWaylandSurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkWaylandSurfaceCreateFlagsKHR;
-    display: Pwl_display;
-    surface: Pwl_surface;
+  VkWaylandSurfaceCreateInfoKHR = record
+    sType    : VkStructureType;
+    pNext    : Pointer;
+    flags    : VkWaylandSurfaceCreateFlagsKHR;
+    display  : Pwl_display;
+    surface  : Pwl_surface;
   end;
+  TVkWaylandSurfaceCreateInfoKHR = VkWaylandSurfaceCreateInfoKHR;
 
 
   TvkCreateWaylandSurfaceKHR = function (
@@ -4442,16 +4549,18 @@ const
 
 type
   PVkMirSurfaceCreateFlagsKHR = ^TVkMirSurfaceCreateFlagsKHR;
+  VkMirSurfaceCreateFlagsKHR  = VkFlags;
   TVkMirSurfaceCreateFlagsKHR = TVkFlags;
 
   PVkMirSurfaceCreateInfoKHR = ^TVkMirSurfaceCreateInfoKHR;
-  TVkMirSurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkMirSurfaceCreateFlagsKHR;
-    connection: PMirConnection;
-    mirSurface: PMirSurface;
+  VkMirSurfaceCreateInfoKHR = record
+    sType      : VkStructureType;
+    pNext      : Pointer;
+    flags      : VkMirSurfaceCreateFlagsKHR;
+    connection : PMirConnection;
+    mirSurface : PMirSurface;
   end;
+  TVkMirSurfaceCreateInfoKHR = VkMirSurfaceCreateInfoKHR;
 
 
   TvkCreateMirSurfaceKHR = function (
@@ -4483,15 +4592,17 @@ const
 
 type
   PVkAndroidSurfaceCreateFlagsKHR = ^TVkAndroidSurfaceCreateFlagsKHR;
+  VkAndroidSurfaceCreateFlagsKHR  = VkFlags;
   TVkAndroidSurfaceCreateFlagsKHR = TVkFlags;
 
   PVkAndroidSurfaceCreateInfoKHR = ^TVkAndroidSurfaceCreateInfoKHR;
-  TVkAndroidSurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkAndroidSurfaceCreateFlagsKHR;
-    window: PANativeWindow;
+  VkAndroidSurfaceCreateInfoKHR = record
+    sType  : VkStructureType;
+    pNext  : Pointer;
+    flags  : VkAndroidSurfaceCreateFlagsKHR;
+    window : PANativeWindow;
   end;
+  TVkAndroidSurfaceCreateInfoKHR = VkAndroidSurfaceCreateInfoKHR;
 
 
   TvkCreateAndroidSurfaceKHR = function (
@@ -4522,11 +4633,11 @@ type
 
   PVkWin32SurfaceCreateInfoKHR = ^TVkWin32SurfaceCreateInfoKHR;
   VkWin32SurfaceCreateInfoKHR = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkWin32SurfaceCreateFlagsKHR;
-    hinstance: HINST;
-    hwnd: HWND;
+    sType     : TVkStructureType;
+    pNext     : Pointer;
+    flags     : TVkWin32SurfaceCreateFlagsKHR;
+    hinstance : HINST;
+    hwnd      : HWND;
   end;
   TVkWin32SurfaceCreateInfoKHR = VkWin32SurfaceCreateInfoKHR;
 
@@ -4553,8 +4664,8 @@ const
 type
   PPVkDebugReportCallbackEXT = ^PVkDebugReportCallbackEXT;
   PVkDebugReportCallbackEXT = ^TVkDebugReportCallbackEXT;
-  TVkDebugReportCallbackEXT = record
-  end;
+  VkDebugReportCallbackEXT  = PtrUInt;
+  TVkDebugReportCallbackEXT = VkDebugReportCallbackEXT;
 
 const
   VK_EXT_DEBUG_REPORT_SPEC_VERSION  = 1;
@@ -4562,57 +4673,67 @@ const
 
 type
   PVkDebugReportObjectTypeEXT = ^TVkDebugReportObjectTypeEXT;
-  TVkDebugReportObjectTypeEXT = (
-    VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT = 0,
-    VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT = 1,
-    VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT = 2,
-    VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT = 3,
-    VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT = 4,
-    VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT = 5,
-    VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT = 6,
-    VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT = 7,
-    VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT = 8,
-    VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT = 9,
-    VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT = 10,
-    VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT = 11,
-    VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT = 12,
-    VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT = 13,
-    VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT = 14,
-    VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT = 15,
-    VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT = 16,
-    VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT = 17,
-    VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT = 18,
-    VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT = 19,
-    VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT = 20,
-    VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT = 21,
-    VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT = 22,
-    VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT = 23,
-    VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT = 24,
-    VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT = 25,
-    VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT = 26,
-    VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT = 27,
-    VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT = 28
-  );
+  VkDebugReportObjectTypeEXT  = int32_t;
+  TVkDebugReportObjectTypeEXT = VkDebugReportObjectTypeEXT;
 
+const
+  VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT         = 0;
+  VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT        = 1;
+  VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT = 2;
+  VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT          = 3;
+  VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT           = 4;
+  VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT       = 5;
+  VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT  = 6;
+  VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT           = 7;
+  VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT   = 8;
+  VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT          = 9;
+  VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT           = 10;
+  VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT           = 11;
+  VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT      = 12;
+  VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT     = 13;
+  VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT      = 14;
+  VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT   = 15;
+  VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT  = 16;
+  VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT = 17;
+  VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT     = 18;
+  VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT        = 19;
+  VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT = 20;
+  VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT         = 21;
+  VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT = 22;
+  VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT  = 23;
+  VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT     = 24;
+  VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT    = 25;
+  VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT     = 26;
+  VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT   = 27;
+  VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT    = 28;
+
+type
   PVkDebugReportErrorEXT = ^TVkDebugReportErrorEXT;
-  TVkDebugReportErrorEXT = (
-    VK_DEBUG_REPORT_ERROR_NONE_EXT = 0,
-    VK_DEBUG_REPORT_ERROR_CALLBACK_REF_EXT = 1
-  );
+  VkDebugReportErrorEXT  = int32_t;
+  TVkDebugReportErrorEXT = VkDebugReportErrorEXT;
 
+const
+  VK_DEBUG_REPORT_ERROR_NONE_EXT         = 0;
+  VK_DEBUG_REPORT_ERROR_CALLBACK_REF_EXT = 1;
+
+type
   PVkDebugReportFlagBitsEXT = ^TVkDebugReportFlagBitsEXT;
-  TVkDebugReportFlagBitsEXT = (
-    VK_DEBUG_REPORT_INFORMATION_BIT_EXT = $00000001,
-    VK_DEBUG_REPORT_WARNING_BIT_EXT = $00000002,
-    VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT = $00000004,
-    VK_DEBUG_REPORT_ERROR_BIT_EXT = $00000008,
-    VK_DEBUG_REPORT_DEBUG_BIT_EXT = $00000010
-  );
+  VkDebugReportFlagBitsEXT  = int32_t;
+  TVkDebugReportFlagBitsEXT = VkDebugReportFlagBitsEXT;
 
+const
+  VK_DEBUG_REPORT_INFORMATION_BIT_EXT         = $00000001;
+  VK_DEBUG_REPORT_WARNING_BIT_EXT             = $00000002;
+  VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT = $00000004;
+  VK_DEBUG_REPORT_ERROR_BIT_EXT               = $00000008;
+  VK_DEBUG_REPORT_DEBUG_BIT_EXT               = $00000010;
+
+type
   PVkDebugReportFlagsEXT = ^TVkDebugReportFlagsEXT;
-  TVkDebugReportFlagsEXT = TVkFlags;
+  VkDebugReportFlagsEXT  = int32_t;
+  TVkDebugReportFlagsEXT = VkDebugReportFlagsEXT;
 
-  TvkDebugReportCallback_f_EXT = function (
+  TVkDebugReportCallback_f_EXT = function (
                                 flags: TVkDebugReportFlagsEXT;
                                 objectType: TVkDebugReportObjectTypeEXT;
                                 object_: uint64_t;
@@ -4623,13 +4744,14 @@ type
                                 pUserData: Pointer): TVkBool32; {$IFDEF CDECL}cdecl{$ELSE}stdcall{$ENDIF};
 
   PVkDebugReportCallbackCreateInfoEXT = ^TVkDebugReportCallbackCreateInfoEXT;
-  TVkDebugReportCallbackCreateInfoEXT = record
-    sType: TVkStructureType;
-    pNext: Pointer;
-    flags: TVkDebugReportFlagsEXT;
-    pfnCallback: TvkDebugReportCallbackEXT;
-    pUserData: Pointer;
+  VkDebugReportCallbackCreateInfoEXT = record
+    sType       : VkStructureType;
+    pNext       : Pointer;
+    flags       : VkDebugReportFlagsEXT;
+    pfnCallback : VkDebugReportCallbackEXT;
+    pUserData   : Pointer;
   end;
+  TVkDebugReportCallbackCreateInfoEXT = VkDebugReportCallbackCreateInfoEXT;
 
 
   TvkCreateDebugReportCallbackEXT = function (
